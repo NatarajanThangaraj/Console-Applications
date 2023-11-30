@@ -13,8 +13,8 @@ public class ChatBotViewModel {
 	}
 
 	public boolean validate(Customer customer) {
-		Pattern pattern=Pattern.compile("^[0-9]{10}$");
-		Matcher matcher=pattern.matcher(customer.getMobileNumber());
+		Pattern pattern = Pattern.compile("^[0-9]{10}$");
+		Matcher matcher = pattern.matcher(customer.getMobileNumber());
 		return matcher.matches();
 	}
 
