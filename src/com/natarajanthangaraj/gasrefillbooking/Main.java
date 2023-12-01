@@ -64,15 +64,13 @@ public class Main {
 	}
 
 	private static void introduction() {
-		System.out.println(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ");
-		System.out.println();
-		System.out.println("        WELCOME TO 24*7 INDANE AUTOMATED REFILL BOOKING SYSTEM          ");
-		System.out.println();
-		System.out.println("            --- Your's Distributor : PRIYA GAS AGENCY --- ");
-		System.out.println();
-		System.out.println("      For our Details Your Customer ID's Last Four Digit is : 4 6 8 3");
-		System.out.println();
-		System.out.println(" = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ");
+		System.out.println("   * = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =");
+		System.out.println("   |                                                                  |");
+		System.out.println("   |     WELCOME TO 24*7 INDANE AUTOMATED REFILL BOOKING SYSTEM       |");
+		System.out.println("   |                                                                  |");
+		System.out.println("   |            --- Your's Distributor : PRIYA GAS AGENCY ---         |");
+		System.out.println("   |                                                                  |");
+		System.out.println("   * = * = * = * = * = * = * = * = * = * = * = * = * = * = * = * = * =");
 	}
 
 	private static void navigation() {
