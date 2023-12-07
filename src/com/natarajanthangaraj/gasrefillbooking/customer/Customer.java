@@ -3,6 +3,7 @@ package com.natarajanthangaraj.gasrefillbooking.customer;
 public class Customer {
 	private long customerID;
 	private String name;
+	private byte age;
 	private String mobileNumber;
 	private long aadharNumber;
 	private String address;
@@ -54,5 +55,13 @@ public class Customer {
 
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
+	}
+
+	public byte getAge() {
+		return age;
+	}
+
+	public void setAge(byte age) {
+		this.age = age;
 	}
 }

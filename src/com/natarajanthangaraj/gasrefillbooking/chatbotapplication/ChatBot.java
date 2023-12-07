@@ -2,6 +2,7 @@ package com.natarajanthangaraj.gasrefillbooking.chatbotapplication;
 
 import java.util.Scanner;
 
+import com.natarajanthangaraj.gasrefillbooking.chatbotapplication.addcustomer.AddCustomer;
 import com.natarajanthangaraj.gasrefillbooking.customer.Customer;
 
 public class ChatBot {
@@ -14,27 +15,17 @@ public class ChatBot {
 	public void userValidation() {
 		Scanner scan = new Scanner(System.in);
 		Customer customer = new Customer();
-		System.out.print("Enter Mobile Number : ");
-		customer.setMobileNumber(scan.next());
-		if (chatbotviewModel.validate(customer)) {
-			isValidMobileNumber();
-		} else {
-			invalidMobileNumber();
-		}
-
+		do {
+			System.out.print("Enter Mobile Number : ");
+			customer.setMobileNumber(scan.next());
+		} while (!chatbotviewModel.validate(customer));
+		new Utility().introduction();
+		chatbotviewModel.start();
 	}
 
-	void isValidMobileNumber()  {
-	new	Utility().introduction();
-	chatbotviewModel.start();
-	}
-
-	void invalidMobileNumber() {
-		System.out.println("Invalid Mobile Number");
-	}
 	public static void main(String[] args) {
-		ChatBot chatbot=new ChatBot();
+		ChatBot chatbot = new ChatBot();
 		chatbot.userValidation();
 	}
-	
+
 }
