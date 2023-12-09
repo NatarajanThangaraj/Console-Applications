@@ -1,46 +1,29 @@
 
 package com.natarajanthangaraj.gasrefillbooking.chatbotapplication;
 
-import java.io.FileReader;
-import java.util.Scanner;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
-import com.natarajanthangaraj.gasrefillbooking.customer.Customer;
+import com.natarajanthangaraj.gasrefillbooking.distributor.Repository;
 
 public class ChatBotViewModel {
 	private ChatBot chatbot;
 	Utility utility = new Utility();
-	Stack<String> stack = new Stack();
+	Stack<String> stack = new Stack<String>();
 
+	
 	public ChatBotViewModel(ChatBot chatBot) {
-		this.chatbot = chatBot;
-	}
-
-	public boolean validate(Customer customer) {
-		Pattern pattern = Pattern.compile("^[0-9]{10}$");
-		Matcher matcher = pattern.matcher(customer.getMobileNumber());
-		return matcher.matches();
+		this.chatbot=chatBot;
 	}
 
 	public void start()  {
 		int select;
+		String path;
+		utility.introduction();
 		stack.push("Press");
-		try {
-			display(parse("Press"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		chatbot.getMessage(Repository.getInstance().parse("Press"));
 		do {
-			Scanner scan = new Scanner(System.in);
-			System.out.println();
-			System.out.print("Enter your Option :");
-			select = scan.nextInt();
+			chatbot.getUserChoice();
+			select=chatbot.UserChoice();
+			
 			if (select == 9) {
 				stack.pop();
 				if (stack.isEmpty()) {
@@ -51,29 +34,14 @@ public class ChatBotViewModel {
 			} else {
 				stack.push(stack.peek() + "_" + select);
 			}
-			String path = stack.peek();
-			try {
-				display(parse(path));
-				utility.navigation();
-			} catch (Exception e) {
-				System.out.println("Wrong Select ...Please Select Correct Number !");
-			}
+			 path = stack.peek();
+			chatbot.getMessage(Repository.getInstance().parse(path));
+			utility.navigation();
 		} while (select != 0);
 		utility.conclusion();
 	}
 
-	private JSONArray parse(String path) throws Exception {
-		JSONParser par = new JSONParser();
-		JSONObject obj = (JSONObject) par.parse(new FileReader(
-				"C:\\Users\\ELCOT\\eclipse-workspace\\Console_Applications\\src\\com\\natarajanthangaraj\\gasrefillbooking\\distributor\\Data.json"));
-		JSONArray arr = (JSONArray) obj.get(path);
-		return arr;
-	}
-	private void display(JSONArray jsonArray) {
-		for (int i = 0; i < jsonArray.size(); i++) {
-			JSONObject jsonObjct = (JSONObject) jsonArray.get(i);
-			System.out.println(jsonObjct.get(Integer.toString(i)));
-		}
-	}
+	
+	
 
 }
