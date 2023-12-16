@@ -19,7 +19,7 @@ public class TrackView {
 		byte selection;
 		do {
 			System.out.println("1.Add new order");
-			System.out.println("2.View all orders");
+			System.out.println("2.View Waiting orders");
 			System.out.println("0.Exit");
 			selection = scan.nextByte();
 			switch(selection) {

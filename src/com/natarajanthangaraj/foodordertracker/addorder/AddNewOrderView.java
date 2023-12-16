@@ -6,7 +6,7 @@ import com.natarajanthangaraj.foodordertracker.dto.Order;
 
 public class AddNewOrderView {
 	Scanner scan = new Scanner(System.in);
-	
+	//private  ordertaker=new OrderTaker();
 	private AddNewOrderPresenter addneworderpresenter;
 
 	public AddNewOrderView() {
@@ -14,14 +14,13 @@ public class AddNewOrderView {
 	}
 
 	public void getOrderDetails() {
-		Order orderDetail = new Order();
-		System.out.print("Enter the OrderNumber : ");
-		orderDetail.setOrderNumber(scan.next());
-		 addneworderpresenter.getOrder(orderDetail);
+		 addneworderpresenter.getOrder( new OrderTaker().takeOrder());
 	}
 
 	public void isSucceeded() {
-		System.out.println("Order Added Successfully");
+		System.out.println("      ---------------------------------------------");
+		System.out.println("      |        Last Order Added Successfully      |");
+		System.out.println("      ---------------------------------------------");
 	}
 
 	public void isFailed() {
