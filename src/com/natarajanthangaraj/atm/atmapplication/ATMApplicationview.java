@@ -20,6 +20,8 @@ public class ATMApplicationview {
 		carddetail.setPinNumber(scan.nextLong());
 		if (atmviewmodel.formatValidate(carddetail)) {
 			atmviewmodel.datavalidate(carddetail);
+		}else {
+			errorMessage();
 		}
 	}
 
