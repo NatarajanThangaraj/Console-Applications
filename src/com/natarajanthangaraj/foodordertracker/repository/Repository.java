@@ -1,4 +1,4 @@
-package com.natarajanthangaraj.foodordertracker.Repository;
+package com.natarajanthangaraj.foodordertracker.repository;
 
 import com.natarajanthangaraj.foodordertracker.dto.Order;
 import com.natarajanthangaraj.foodordertracker.tracker.Display;
