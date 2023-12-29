@@ -1,6 +1,7 @@
 package com.natarajanthangaraj.airlinereservationsystem.Repository;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Random;
 import java.io.FileReader;
@@ -10,9 +11,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import com.natarajanthangaraj.airlinereservationsystem.application.dto.SearchFlights;
-import com.natarajanthangaraj.airlinereservationsystem.dto.Passenger;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Ticket;
+import com.natarajanthangaraj.airlinereservationsystem.dto.TicketDetails;
 import com.natarajanthangaraj.airlinereservationsystem.flight.Flight;
 
 public class Repository {
@@ -46,7 +46,7 @@ public class Repository {
 		}
 	}
 
-	public List<Flight> availableFlights(SearchFlights userSearch) {
+	public List<Flight> availableFlights(TicketDetails userSearch) {
 		getFlightDetails();
 		List<Flight> availableFlights = new ArrayList<>();
 		for (Flight flight : allFlights) {
@@ -74,17 +74,25 @@ public class Repository {
 		fileWriter(flight, fileFlight);
 	}
 
-	public Ticket createTicket(String userSelectedFlight, Passenger passengerDetails) {
+	void fileWriter(JSONObject jsonobject, String path) {
+		try (FileWriter fileWriter = new FileWriter(path)) {
+			fileWriter.write(jsonobject.toJSONString());
+		} catch (Exception e) {
+		}
+	}
+
+	public Ticket createTicket(String userSelectedFlight, TicketDetails passengerDetails) {
 		Ticket ticket = new Ticket();
 		JSONObject flightDetails = getSpecifiedFlight(userSelectedFlight);
 		ticket.setFrom((String) flightDetails.get("From"));
 		ticket.setTo((String) flightDetails.get("To"));
 		ticket.setDepartTime((String) flightDetails.get("DepartTime"));
 		ticket.setLandingTime((String) flightDetails.get("LandingTime"));
-		ticket.setFirstName(passengerDetails.getFirstName());
-		ticket.setLastName(passengerDetails.getLastName());
-		ticket.setPassengers(passengerDetails.getPassengers());
-		ticket.setMobileNumber(passengerDetails.getMobileNumber());
+		ticket.setFirstName(passengerDetails.getFirst_Name());
+		ticket.setLastName(passengerDetails.getLast_Name());
+		ticket.setPassenger_Type(passengerDetails.getPassenger_Type());
+		ticket.setPassenger_Count(passengerDetails.getPassenger_Count());
+		ticket.setMobileNumber(passengerDetails.getMobile_Number());
 		ticket.setTicketNumber(getTicketNumber(userSelectedFlight));
 		//fileWriter(ticket,fileTicket);
 		return ticket;
@@ -109,11 +117,6 @@ public class Repository {
 		return object;
 	}
 
-	void fileWriter(JSONObject jsonobject, String path) {
-		try (FileWriter fileWriter = new FileWriter(path)) {
-			fileWriter.write(jsonobject.toJSONString());
-		} catch (Exception e) {
-		}
-	}
+	 
 
 }

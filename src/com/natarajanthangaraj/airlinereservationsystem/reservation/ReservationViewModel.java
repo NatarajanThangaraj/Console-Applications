@@ -1,8 +1,8 @@
 package com.natarajanthangaraj.airlinereservationsystem.reservation;
 
 import com.natarajanthangaraj.airlinereservationsystem.Repository.Repository;
-import com.natarajanthangaraj.airlinereservationsystem.application.dto.SearchFlights;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Ticket;
+import com.natarajanthangaraj.airlinereservationsystem.dto.TicketDetails;
 
 public class ReservationViewModel {
 	private ReservationView reserveview;
@@ -14,9 +14,9 @@ public class ReservationViewModel {
 	}
 
 	public void getAllFlights() {
-		SearchFlights sf = reserveview.flightDetails();
+		 TicketDetails tk = reserveview.flightDetails();
 		
-		reserveview.showavailableFlights(Repository.getInstance().availableFlights(sf));
+		reserveview.showavailableFlights(Repository.getInstance().availableFlights(tk));
 
 	}
 

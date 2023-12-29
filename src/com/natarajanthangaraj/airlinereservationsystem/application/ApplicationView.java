@@ -6,7 +6,6 @@ import com.natarajanthangaraj.airlinereservationsystem.reservation.ReservationVi
 
 public class ApplicationView {
 	private ApplicationViewModel appviewmodel;
-	ReservationView reserveView = new ReservationView();
 	Scanner scan = new Scanner(System.in);
 
 	public ApplicationView() {
@@ -18,30 +17,12 @@ public class ApplicationView {
 		do {
 			showFeatures();
 			System.out.print("Enter your choice: ");
-
 			select = scan.nextInt();
-			switch (select) {
-			case 1 -> {
-				reserveView.userSearch();
-
-			}
-			case 2 -> {
-
-			}
-			case 3 -> {
-
-			}
-			case 4 -> {
-
-			}
-			case 0 -> {
-				break;
-			}
-			default -> {
-				System.out.println("Invalid selecton");
-			}
-			}
-		} while (select != 0);
+			if(select!=0)
+			appviewmodel.selectedFeature(select);
+		}while(select!=0);
+			
+		
 	}
 
 	public void showFeatures() {

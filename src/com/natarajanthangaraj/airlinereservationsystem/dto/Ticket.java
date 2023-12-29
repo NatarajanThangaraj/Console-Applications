@@ -9,9 +9,10 @@ public class Ticket {
 	private String landingTime;
 	private String firstName;
 	private String lastName;
-	private Long passengers;
-	private String email;
-	private Long mobileNumber;
+	private int passenger_Type;
+	private int Passenger_Count;
+	private String Gmail;
+	private int mobileNumber;
 
 	public String getTicketNumber() {
 		return ticketNumber;
@@ -77,31 +78,40 @@ public class Ticket {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
-	}
+	
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Long getMobileNumber() {
+	public int getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(Long mobileNumber) {
+	public void setMobileNumber(int mobileNumber) {
 		this.mobileNumber = mobileNumber;
-	}
-
-	public Long getPassengers() {
-		return passengers;
 	}
 
 	
 
-	public void setPassengers(Long passengers2) {
-		this.passengers=passengers2;
-		
+	public int getPassenger_Type() {
+		return passenger_Type;
+	}
+
+	public void setPassenger_Type(int passenger_Type) {
+		this.passenger_Type = passenger_Type;
+	}
+
+	public int getPassenger_Count() {
+		return Passenger_Count;
+	}
+
+	public void setPassenger_Count(int passenger_Count) {
+		Passenger_Count = passenger_Count;
+	}
+
+	public String getGmail() {
+		return Gmail;
+	}
+
+	public void setGmail(String gmail) {
+		Gmail = gmail;
 	}
 
 	

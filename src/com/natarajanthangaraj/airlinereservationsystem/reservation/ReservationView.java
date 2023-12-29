@@ -1,11 +1,12 @@
 package com.natarajanthangaraj.airlinereservationsystem.reservation;
 
 import java.util.List;
+
 import java.util.Scanner;
 
-import com.natarajanthangaraj.airlinereservationsystem.application.dto.SearchFlights;
-import com.natarajanthangaraj.airlinereservationsystem.dto.Passenger;
+import com.natarajanthangaraj.airlinereservationsystem.consoleinputhandler.DateValidation;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Ticket;
+import com.natarajanthangaraj.airlinereservationsystem.dto.TicketDetails;
 import com.natarajanthangaraj.airlinereservationsystem.flight.Flight;
 
 public class ReservationView {
@@ -23,8 +24,8 @@ public class ReservationView {
 		reserveviewmodel.ticketAllocation(userSelectedFlight());
 	}
 
-	public SearchFlights flightDetails() {
-		SearchFlights newSearch = new SearchFlights();
+	public TicketDetails flightDetails() {
+		TicketDetails newSearch = new TicketDetails();
 
 		System.out.print(" From : ");
 		newSearch.setFrom(scan.next());
@@ -36,9 +37,9 @@ public class ReservationView {
 		System.out.println("     |    1 . Adult      |");
 		System.out.println("     +===================+");
 		System.out.print("Passenger :");
-		newSearch.setAdult(scan.nextInt());
+		newSearch.setPassenger_Type(scan.nextInt());
 		System.out.print(" Number of Passenger :");
-		newSearch.setAdultCount(scan.nextInt());
+		newSearch.setPassenger_Count(scan.nextInt());
 		System.out.println("     +===================+");
 		System.out.println("     |    1 .Economy     |");
 		System.out.println("     |    2 .Business    |");
@@ -50,6 +51,9 @@ public class ReservationView {
 
 	void showavailableFlights(List<Flight> flights) {
 		int Numbers = 1;
+		if(flights.size()==0) {
+			System.out.println(" Currently not Available ...");
+		}else {
 		System.out.println("\t SELECT FLIGHT :\t");
 		System.out.println("+----------------------------------------------------------------------------+");
 		System.out.println("| N |  Flight Number  |  Depart Time  |  Landing Time  |   Price  |   seats  |");
@@ -62,6 +66,7 @@ public class ReservationView {
 		}
 		System.out.println("+----------------------------------------------------------------------------+");
 	}
+	}
 
 	String userSelectedFlight() {
 		System.out.print("Enter Flight Number: ");
@@ -69,21 +74,24 @@ public class ReservationView {
 		return selectedFlight.toUpperCase();
 	}
 
-	Passenger passengerDetails() {
-		Passenger travellor = new Passenger();
+	TicketDetails passengerDetails() {
+		TicketDetails travellor = new TicketDetails();
 		System.out.println("\t\t PASSENGER DETAILS : \t\t");
 		System.out.print(" FirstName : ");
-		travellor.setFirstName(scan.next());
+		travellor.setFirst_Name(scan.next());
 		System.out.print(" LastName : ");
-		travellor.setLastName(scan.next());
-		System.out.print(" Date of Birth : ");
-		travellor.setDob(scan.next());
+		travellor.setLast_Name(scan.next());
+		System.out.print(" Date of Birth [ dd/mm/yyyy ] : ");
+		while(!DateValidation.isValidDate(scan.next())) {
+			System.out.print(" Please Enter the valid date : ");
+		} 
+			
+		
+		travellor.setDate_Of_Birth(scan.next());
 		System.out.print(" Email : ");
-		travellor.setEmail(scan.next());
+		travellor.setGmail(scan.next());
 		System.out.print(" Mobile Number : ");
-		travellor.setMobileNumber(scan.nextLong());
-		System.out.print(" Passenger  : Adult - ");
-		travellor.setPassengers(scan.nextLong());
+		travellor.setMobile_Number(scan.nextInt());
 		return travellor;
 	}
 
@@ -93,7 +101,8 @@ public class ReservationView {
 		System.out.println(ticket.getFrom() + " ----> " + ticket.getTo());
 		System.out.println("Depart Date : " + ticket.getDate());
 		System.out.println("Passenger Name : " + ticket.getFirstName() + " " + ticket.getLastName());
-		System.out.println("Passenger Details : Adult - " + ticket.getPassengers());
+		System.out.println("Passenger Details : ");
+		int passengerType=ticket.getPassenger_Type();
 		System.out.println(" On-Boarding : Treminal 2");
 		System.out.println();
 	}
