@@ -5,7 +5,6 @@ public class TicketDetails {
 	private String from;
 	private String to;
 	private String departDate;
-	private String departTime;
 	private String passenger_Type;
 	private int passenger_Count;
 	private String category;
@@ -83,12 +82,7 @@ public class TicketDetails {
 	public void setMobile_Number(String mobile_Number) {
 		Mobile_Number = mobile_Number;
 	}
-	public String getDepartTime() {
-		return departTime;
-	}
-	public void setDepartTime(String departTime) {
-		this.departTime = departTime;
-	}
+	
 	
 	
 }

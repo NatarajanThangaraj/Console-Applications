@@ -33,9 +33,6 @@ public class ReservationView {
 		ticketDetails.setTo(scan.next());
 		System.out.print(" Depart Date [dd/mm/yyyy] :");
 		ticketDetails.setDepartDate( DateValidation.isValidDateTime());
-		System.out.print(" Time [hh:mm] :");
-		ticketDetails.setDepartTime(scan.next());
-		
 		System.out.println("     +===================+");
 		System.out.println("     |    1 . Adult      |");
 		System.out.println("     +===================+");
