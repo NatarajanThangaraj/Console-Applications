@@ -4,6 +4,8 @@ public class Flight {
 	private String flightNumber;
 	private String from;
 	private String to;
+	private String departTime;
+	private String landingTime;
 	private String economyPrice;
 	private String businessPrice;
 	private Long economySeats;
@@ -46,7 +48,7 @@ public class Flight {
 	}
 
 	public void setBusinessSeats(int businessSeats) {
-		businessSeats = businessSeats;
+		this.businessSeats = businessSeats;
 	}
 
 	public String getEconomyPrice() {
@@ -63,6 +65,22 @@ public class Flight {
 
 	public void setBusinessPrice(String businessPrice) {
 		this.businessPrice = businessPrice;
+	}
+
+	public String getDepartTime() {
+		return departTime;
+	}
+
+	public void setDepartTime(String departTime) {
+		this.departTime = departTime;
+	}
+
+	public String getLandingTime() {
+		return landingTime;
+	}
+
+	public void setLandingTime(String landingTime) {
+		this.landingTime = landingTime;
 	}
 
 }

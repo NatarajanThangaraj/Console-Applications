@@ -2,6 +2,7 @@ package com.natarajanthangaraj.airlinereservationsystem.application;
 
 import java.util.Scanner;
 
+import com.natarajanthangaraj.airlinereservationsystem.Utility;
 import com.natarajanthangaraj.airlinereservationsystem.reservation.ReservationView;
 
 public class ApplicationView {
@@ -17,7 +18,7 @@ public class ApplicationView {
 		do {
 			showFeatures();
 			System.out.print("Enter your choice: ");
-			select = scan.nextInt();
+			select = Utility.getInteger();
 			if(select!=0)
 			appviewmodel.selectedFeature(select);
 		}while(select!=0);
@@ -31,7 +32,7 @@ public class ApplicationView {
 		System.out.println("  +======================================+");
 		System.out.println("  |  1. Search Flights                   |");
 		System.out.println("  |  2. Manage Booking                   |");
-		System.out.println("  |  3. Check - In                       |");
+		System.out.println("  |  3. View Ticket                      |");
 		System.out.println("  |  4. Flight Status                    |");
 		System.out.println("  |  0. Exit                             |");
 		System.out.println("  +======================================+");

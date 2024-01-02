@@ -7,12 +7,14 @@ public class Ticket {
 	private String date;
 	private String departTime;
 	private String landingTime;
+	private int terminalNumber;
 	private String firstName;
 	private String lastName;
-	private int passenger_Type;
+	private String passenger_Type;
 	private int Passenger_Count;
 	private String Gmail;
-	private int mobileNumber;
+	private String mobileNumber;
+	
 
 	public String getTicketNumber() {
 		return ticketNumber;
@@ -80,22 +82,22 @@ public class Ticket {
 
 	
 
-	public int getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(int mobileNumber) {
-		this.mobileNumber = mobileNumber;
+	public void setMobileNumber(String string) {
+		this.mobileNumber = string;
 	}
 
 	
 
-	public int getPassenger_Type() {
+	public String getPassenger_Type() {
 		return passenger_Type;
 	}
 
-	public void setPassenger_Type(int passenger_Type) {
-		this.passenger_Type = passenger_Type;
+	public void setPassenger_Type(String string) {
+		this.passenger_Type = string;
 	}
 
 	public int getPassenger_Count() {
@@ -112,6 +114,14 @@ public class Ticket {
 
 	public void setGmail(String gmail) {
 		Gmail = gmail;
+	}
+
+	public int getTerminalNumber() {
+		return terminalNumber;
+	}
+
+	public void setTerminalNumber(int terminalNumber) {
+		this.terminalNumber = terminalNumber;
 	}
 
 	

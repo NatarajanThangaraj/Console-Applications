@@ -5,16 +5,17 @@ public class TicketDetails {
 	private String from;
 	private String to;
 	private String departDate;
-	private int passenger_Type;
+	private String departTime;
+	private String passenger_Type;
 	private int passenger_Count;
-	private int category;
+	private String category;
 
 	                        //Passenger Details
 	private String First_Name;
 	private String Last_Name;
 	private String Date_Of_Birth;
 	private String Gmail;
-	private int Mobile_Number;
+	private String Mobile_Number;
 	
 	public String getFrom() {
 		return from;
@@ -34,11 +35,11 @@ public class TicketDetails {
 	public void setDepartDate(String departDate) {
 		this.departDate = departDate;
 	}
-	public int getPassenger_Type() {
+	public String getPassenger_Type() {
 		return passenger_Type;
 	}
-	public void setPassenger_Type(int passenger_Type) {
-		this.passenger_Type = passenger_Type;
+	public void setPassenger_Type(String string) {
+		this.passenger_Type = string;
 	}
 	public int getPassenger_Count() {
 		return passenger_Count;
@@ -46,10 +47,10 @@ public class TicketDetails {
 	public void setPassenger_Count(int passenger_Count) {
 		this.passenger_Count = passenger_Count;
 	}
-	public int getCategory() {
+	public String getCategory() {
 		return category;
 	}
-	public void setCategory(int class1) {
+	public void setCategory(String class1) {
 		category = class1;
 	}
 	public String getFirst_Name() {
@@ -76,10 +77,18 @@ public class TicketDetails {
 	public void setGmail(String gmail) {
 		Gmail = gmail;
 	}
-	public int getMobile_Number() {
+	public String getMobile_Number() {
 		return Mobile_Number;
 	}
-	public void setMobile_Number(int mobile_Number) {
+	public void setMobile_Number(String mobile_Number) {
 		Mobile_Number = mobile_Number;
 	}
+	public String getDepartTime() {
+		return departTime;
+	}
+	public void setDepartTime(String departTime) {
+		this.departTime = departTime;
+	}
+	
+	
 }

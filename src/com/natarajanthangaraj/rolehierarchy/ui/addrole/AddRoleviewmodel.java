@@ -9,9 +9,10 @@ public class AddRoleviewmodel {
 	public AddRoleviewmodel(AddRoleview addRoleview) {
 		addroleview=addRoleview;
 	}
-	public void addRootRoleInRepositry(Role role) {
+	public void addRoleInRepositry(Role role) {
 		 Repository.getInstance().initRootRole(role);
 		addroleview.display();
 	}
+	
 
 }

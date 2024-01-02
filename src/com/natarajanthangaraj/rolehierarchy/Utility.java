@@ -10,4 +10,9 @@ public class Utility {
 		return str;
 
 	}
+
+	public static int getNumericValue() {
+		int number = scan.nextInt();
+		return number;
+	}
 }

@@ -2,16 +2,9 @@ package com.natarajanthangaraj.rolehierarchy.dto;
 
 public class Role {
 	private String rootRole;
-	private String role;
 	private String subRole;
+	private String reportingRole;
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 	public String getSubRole() {
 		return subRole;
@@ -27,5 +20,13 @@ public class Role {
 
 	public void setRootRole(String rootRole) {
 		this.rootRole = rootRole;
+	}
+
+	public String getReportingRole() {
+		return reportingRole;
+	}
+
+	public void setReportingRole(String reportingRole) {
+		this.reportingRole = reportingRole;
 	}
 }

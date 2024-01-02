@@ -1,29 +1,28 @@
 package com.natarajanthangaraj.airlinereservationsystem.reservation;
 
-import com.natarajanthangaraj.airlinereservationsystem.Repository.Repository;
-import com.natarajanthangaraj.airlinereservationsystem.dto.Ticket;
 import com.natarajanthangaraj.airlinereservationsystem.dto.TicketDetails;
+import com.natarajanthangaraj.airlinereservationsystem.repository.Repository;
 
 public class ReservationViewModel {
 	private ReservationView reserveview;
+	TicketDetails ticketdetails;
 
-	// private Repository repo;
 	public ReservationViewModel(ReservationView reservationView) {
 		this.reserveview = reservationView;
-		// repo=new Repository();
+		// ticketdetails=new TicketDetails();
 	}
 
 	public void getAllFlights() {
-		 TicketDetails tk = reserveview.flightDetails();
-		
-		reserveview.showavailableFlights(Repository.getInstance().availableFlights(tk));
+		  ticketdetails = reserveview.flightDetails();
+		reserveview.showavailableFlights(Repository.getInstance().availableFlights(ticketdetails));
 
 	}
 
 	public void ticketAllocation(String userSelectedFlight) {
-		Repository.getInstance().allotSeat(userSelectedFlight);
-		Ticket ticket=Repository.getInstance().createTicket(userSelectedFlight,reserveview.passengerDetails());
-		reserveview.showTicket(ticket);
+		Repository.getInstance().allotSeat(userSelectedFlight,reserveview.passengerDetails());
+		if(Repository.getInstance().createTicket(userSelectedFlight,ticketdetails)){
+			reserveview.successMessage();
+		}
 	}
 
 }
