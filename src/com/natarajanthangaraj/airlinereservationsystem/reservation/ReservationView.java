@@ -1,8 +1,6 @@
 package com.natarajanthangaraj.airlinereservationsystem.reservation;
 
 import java.util.List;
-
-
 import java.util.Scanner;
 
 import com.natarajanthangaraj.airlinereservationsystem.Utility;
