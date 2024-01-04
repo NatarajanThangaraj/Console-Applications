@@ -28,44 +28,5 @@ public class Repository {
 		query="select max(roleID) from Role";
 		return MysqlConnection.getInstance().getMaxID(query);
 		
-	}
-//	public LinkedList<String> roleHierarchyList() {
-//		LinkedList<String> list = new LinkedList<>();
-//		return list;
-//	}
-//	void fileWriter(JSONObject jsonobject,String path) {
-//		try (FileWriter filewriter = new FileWriter(path)) {
-//			filewriter.write(jsonobject.toJSONString());
-//			
-//		}catch(Exception e) {
-//			
-//		}
-//	}
-//	JSONObject fileReader(String path) {
-//		JSONParser parser=new JSONParser();
-//		JSONObject fileDetails;
-//		try {
-//			fileDetails = (JSONObject) parser.parse(path);
-//			return fileDetails;
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//		//temporery
-//		return null;
-//		
-//	}
-//	@SuppressWarnings("unchecked")
-//	JSONObject createInnerJsonObject() {
-//		JSONObject object=new JSONObject();
-//		JSONArray array=new JSONArray();
-//		object.put("Name ", null);
-//		object.put("Reporting_Roles", array);
-//		array.add("hello");
-//		return object;
-//	}
-	
-	
-	
-
-	
+	}	
 }
