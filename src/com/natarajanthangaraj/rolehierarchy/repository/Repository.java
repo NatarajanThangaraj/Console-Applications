@@ -1,6 +1,7 @@
 package com.natarajanthangaraj.rolehierarchy.repository;
 
 import java.io.FileWriter;
+import java.sql.*;
 import java.util.LinkedList;
 
 import org.json.simple.JSONArray;
@@ -11,8 +12,9 @@ import org.json.simple.parser.ParseException;
 import com.natarajanthangaraj.rolehierarchy.dto.Role;
 
 public class Repository {
-	private final String path="C:\\Users\\ELCOT\\eclipse-workspace\\Console_Applications\\src\\com\\natarajanthangaraj\\rolehierarchy\\repository\\RoleData.json";
-	static TreeNode node;
+	//private final String path="C:\\Users\\ELCOT\\eclipse-workspace\\Console_Applications\\src\\com\\natarajanthangaraj\\rolehierarchy\\repository\\RoleData.json";
+	//static TreeNode node;
+	Connection con;
 	private static Repository repo;
 
 	private Repository() {
@@ -25,12 +27,9 @@ public class Repository {
 		return repo;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void initRootRole(Role role) {
-		JSONObject parent=new JSONObject();
-		System.out.println(role.getRootRole());
-		parent.put(role.getRootRole(), createInnerJsonObject());
-		fileWriter(parent,path);
+		String sql="insert into Role('Role_Name','Reporting_Name')"
+	                 +"values("+role.getRootRole()+","+role.getReportingRole()+")";
 	}
 	public LinkedList<String> roleHierarchyList() {
 		LinkedList<String> list = new LinkedList<>();

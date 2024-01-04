@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 import com.natarajanthangaraj.airlinereservationsystem.Utility;
 import com.natarajanthangaraj.airlinereservationsystem.consoleinputhandler.DateValidation;
+import com.natarajanthangaraj.airlinereservationsystem.dto.Flight;
 import com.natarajanthangaraj.airlinereservationsystem.dto.TicketDetails;
-import com.natarajanthangaraj.airlinereservationsystem.flight.Flight;
 
 public class ReservationView {
 	TicketDetails ticketDetails = new TicketDetails();

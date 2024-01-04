@@ -12,8 +12,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import com.natarajanthangaraj.airlinereservationsystem.Utility;
+import com.natarajanthangaraj.airlinereservationsystem.dto.Flight;
 import com.natarajanthangaraj.airlinereservationsystem.dto.TicketDetails;
-import com.natarajanthangaraj.airlinereservationsystem.flight.Flight;
 
 public class Repository {
 	private final String fileFlight = "C:\\Users\\ELCOT\\eclipse-workspace\\Console_Applications\\src\\com\\natarajanthangaraj\\airlinereservationsystem\\Repository\\Flights.json";

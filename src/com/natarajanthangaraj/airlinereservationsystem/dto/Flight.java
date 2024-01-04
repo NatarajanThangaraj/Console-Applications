@@ -1,4 +1,4 @@
-package com.natarajanthangaraj.airlinereservationsystem.flight;
+package com.natarajanthangaraj.airlinereservationsystem.dto;
 
 public class Flight {
 	private String flightNumber;
