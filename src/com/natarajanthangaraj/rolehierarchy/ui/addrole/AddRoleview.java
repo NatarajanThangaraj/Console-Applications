@@ -13,26 +13,31 @@ public class AddRoleview {
 		this.applicationviewmodel=applicationViewModel2;
 		this.addroleviewmodel = new AddRoleviewmodel(this);
 	}
-	public void addRootRole(){
+//	public void addRootRole(){
+//		Role role =new Role(); 
+//		role.setRole(getRootRole());
+	
+//		
+//	}
+	public void addRole(){
 		Role role =new Role(); 
-		role.setRootRole(getRootRole());
-		addroleviewmodel.addRoleInRepositry(role);
-	}
-	public void addSubRole(){
-		Role role =new Role(); 
-		role.setSubRole(getInputSubRole());
+		role.setRole(getInputSubRole());
 		role.setReportingRole(getInputReportingRole());
-		addroleviewmodel.addRoleInRepositry(role);
+		if(addroleviewmodel.addRoleInRepositry(role)) {
+			applicationviewmodel.successMessage();
+		}else {
+			applicationviewmodel.errorMessage();
+		}
 	}
 
-	 String getRootRole() {
-		System.out.print(" Enter root role name : ");
-		String rootRoleName = Utility.getStringInput();
-		return rootRoleName.toUpperCase();
-	}
+//	 String getRootRole() {
+//		System.out.print(" Enter root role name : ");
+//		String rootRoleName = Utility.getStringInput();
+//		return rootRoleName.toUpperCase();
+//	}
 
 	 String getInputSubRole() {
-		System.out.print(" Enter Sub Role Name : ");
+		System.out.print(" Enter  Role Name : ");
 		String rootSubName = Utility.getStringInput();
 		return rootSubName.toUpperCase();
 
@@ -43,8 +48,8 @@ public class AddRoleview {
 		String reportingRoleName = Utility.getStringInput();
 		return reportingRoleName.toUpperCase();
 	}
-	public void display() {
-		applicationviewmodel.requestToShowHierarchy();
-	}
+//	public void display() {
+//		applicationviewmodel.requestToShowHierarchy();
+//	}
 	
 }
