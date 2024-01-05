@@ -21,6 +21,7 @@ public class AddRoleview {
 //	}
 	public void addRole(){
 		Role role =new Role(); 
+		// add condition if add root role
 		role.setRole(getInputSubRole());
 		role.setReportingRole(getInputReportingRole());
 		if(addroleviewmodel.addRoleInRepositry(role)) {

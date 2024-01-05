@@ -7,8 +7,9 @@ public class Utility {
 	static Scanner scan = new Scanner(System.in);
 
 	public static String getStringInput() {
-		String str = scan.next();
-		return str;
+		String str = scan.nextLine();
+		
+		return str.toUpperCase();
 
 	}
 
@@ -16,6 +17,7 @@ public class Utility {
 		while(true) {
 		try {
 		int number = scan.nextInt();
+		scan.nextLine();
 		return number;
 		}catch(Exception e) {
 			System.out.print(" Enter valid choice : ");
