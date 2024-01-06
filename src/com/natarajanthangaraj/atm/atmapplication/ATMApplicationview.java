@@ -1,23 +1,21 @@
 package com.natarajanthangaraj.atm.atmapplication;
-
-import java.util.Scanner;
-
 import com.natarajanthangaraj.atm.dto.CardDetails;
+import com.natarajanthangaraj.atm.validate.InputHandler;
 
 public class ATMApplicationview {
-	Scanner scan = new Scanner(System.in);
+	
 	private ATMApplicationViewModel atmviewmodel;
-
+	CardDetails carddetail = new CardDetails();
 	public ATMApplicationview() {
 		this.atmviewmodel = new ATMApplicationViewModel(this);
 	}
 
 	public void insertCard() {
-		CardDetails carddetail = new CardDetails();
+		
 		System.out.print(" Enter 16 - digit card Number : ");
-		carddetail.setATMCardNumber(scan.next());
+		carddetail.setATMCardNumber(InputHandler.getStringValue());
 		System.out.print(" Enter Pin Number : ");
-		carddetail.setPinNumber(scan.nextLong());
+		carddetail.setPinNumber(InputHandler.getNumber());
 		if (atmviewmodel.formatValidate(carddetail)) {
 			atmviewmodel.datavalidate(carddetail);
 		}else {
@@ -30,7 +28,8 @@ public class ATMApplicationview {
 		System.out.println(" +-------------------------------+");
 		System.out.println(" |  1.Deposit                    |");
 		System.out.println(" |  2.Withdrawal                 |");
-		System.out.println(" |  3.Balance Enquiry           |");
+		System.out.println(" |  3.Balance Enquiry            |");
+		System.out.println(" |  4.Change Pin Number          |");
 		System.out.println(" |  0.Cancel                     |");
 		System.out.println(" +-------------------------------+\n");
 
@@ -38,7 +37,7 @@ public class ATMApplicationview {
 
 	public int userSelection() {
 		System.out.print("Enter the choice : ");
-		int select = scan.nextInt();
+		int select = InputHandler.getChoice();
 		return select;
 	}
 

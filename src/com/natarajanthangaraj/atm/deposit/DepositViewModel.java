@@ -9,10 +9,12 @@ public class DepositViewModel {
 		this.depositview = depositView2;
 	}
 
-	public boolean depositAmount(String userId,Long amount) {
+	public boolean depositAmount(String userId,long amount) {
 		Repository.getInstance().isDeposited(userId,amount);
 		return true;
 	}
+
+	
 
 	
 

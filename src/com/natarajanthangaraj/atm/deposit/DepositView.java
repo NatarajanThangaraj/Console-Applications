@@ -1,24 +1,27 @@
 package com.natarajanthangaraj.atm.deposit;
 
-import java.util.Scanner;
+import com.natarajanthangaraj.atm.validate.InputHandler;
 
 public class DepositView {
-	Scanner scan = new Scanner(System.in);
-	public  DepositViewModel depositviewmodel;
-	 public DepositView(){
-		 this.depositviewmodel=new  DepositViewModel(this);
-	 }
-	public Long getAmount() {
+
+	public DepositViewModel depositviewmodel;
+
+	public DepositView() {
+		this.depositviewmodel = new DepositViewModel(this);
+	}
+
+	public long getAmount() {
 		System.out.println("\n ----   Amount Deposit   ---\n");
 		System.out.print(" Enter Amount : ");
-		Long amount = scan.nextLong();
+		long amount = InputHandler.getNumber();
 		return amount;
 	}
+
 	public void getdepositAmount(String userID) {
-		if(depositviewmodel.depositAmount(userID,getAmount())) {
-			System.out.println("\n Amount Credited \n");
-		}else {
-			System.out.println(" Last Transaction Cancelled ");
+		if (depositviewmodel.depositAmount(userID, getAmount())) {
+			System.out.println("\n" + "\u001B[32m" + "~***~ Amount Credited ~***~" + "\u001B[0m" + "\n");
+		} else {
+			System.err.println(" Last Transaction Cancelled ");
 		}
 	}
 }

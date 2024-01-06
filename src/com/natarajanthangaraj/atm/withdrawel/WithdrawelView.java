@@ -1,24 +1,27 @@
 package com.natarajanthangaraj.atm.withdrawel;
 
-import java.util.Scanner;
+import com.natarajanthangaraj.atm.validate.InputHandler;
 
 public class WithdrawelView {
-	Scanner scan=new Scanner(System.in);
+
 	private WithdrawelViewModel withdrawviewmodel;
-	public  WithdrawelView () {
-		this.withdrawviewmodel=new WithdrawelViewModel(this);
+
+	public WithdrawelView() {
+		this.withdrawviewmodel = new WithdrawelViewModel(this);
 	}
+
 	public Long getAmount() {
-		System.out.println("\n ----   Cash WithDrawel   ---\n");
+		System.out.println("\n " + "\u001B[32m" + "----   Cash WithDrawel   ---" + "\u001B[0m" + "\n");
 		System.out.print(" Enter Amount : ");
-		Long amount = scan.nextLong();
+		Long amount = InputHandler.getNumber();
 		return amount;
 	}
+
 	public void getWithdrawAmount(String userID) {
-		if(withdrawviewmodel.possibleForWithdraw(userID, getAmount())) {
-			System.out.println("\n Please collect the Cash ! \n");
-		}else {
-			System.out.println("\n Insufficient Balance...  \n ");
+		if (withdrawviewmodel.possibleForWithdraw(userID, getAmount())) {
+			System.out.println("\n" + "\u001B[32m" + "Please collect the Cash !" + "\u001B[0m" + "\n");
+		} else {
+			System.err.println("\n Insufficient Balance...  \n ");
 		}
 	}
 }

@@ -1,18 +1,31 @@
 package com.natarajanthangaraj.atm.dto;
 
 public class CardDetails {
-	private String ATMCardNumber;
-	private Long PinNumber;
+	private String atmCardNumber;
+	private long pinNumber;
+	private String accountNumber;
+
 	public String getATMCardNumber() {
-		return ATMCardNumber;
+		return atmCardNumber;
 	}
+
 	public void setATMCardNumber(String aTMCardNumber) {
-		ATMCardNumber = aTMCardNumber;
+		atmCardNumber = aTMCardNumber;
 	}
-	public Long getPinNumber() {
-		return PinNumber;
+
+	public long getPinNumber() {
+		return pinNumber;
 	}
-	public void setPinNumber(Long pinNumber) {
-		PinNumber = pinNumber;
+
+	public void setPinNumber(long pin) {
+		 pinNumber=pin;
+	}
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 }

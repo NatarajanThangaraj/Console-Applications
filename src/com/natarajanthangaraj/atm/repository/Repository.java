@@ -10,7 +10,8 @@ import com.natarajanthangaraj.atm.dto.CardDetails;
 
 public class Repository {
 	private static Repository repo;
-	String path="C:\\Users\\ELCOT\\eclipse-workspace\\Console_Applications\\src\\com\\natarajanthangaraj\\atm\\repository\\BankAccounts.json";
+	String path = "C:\\Users\\ELCOT\\eclipse-workspace\\Console_Applications\\src\\com\\natarajanthangaraj\\atm\\repository\\BankAccounts.json";
+
 	private Repository() {
 
 	}
@@ -23,9 +24,11 @@ public class Repository {
 	}
 
 	public boolean validation(CardDetails carddetail) {
-		JSONObject object=(JSONObject) fileParser().get(carddetail.getATMCardNumber());
-		return object.get("PinNumber").equals(carddetail.getPinNumber());
+		JSONObject object = (JSONObject) fileParser().get(carddetail.getATMCardNumber());
+		
+		return (long)object.get("PinNumber")==(carddetail.getPinNumber());
 	}
+
 	JSONObject fileParser() {
 		JSONParser parser = new JSONParser();
 		JSONObject object = null;
@@ -37,13 +40,6 @@ public class Repository {
 		return object;
 	}
 
-	@SuppressWarnings("unchecked")
-	public void isDeposited(String userId, Long amount) {
-		JSONObject file=fileParser();
-		JSONObject account=(JSONObject)file.get(userId);
-		account.put("Amount",(Double) account.get("Amount")+amount);
-		fileWriter(file,path);
-	}
 	void fileWriter(JSONObject jsonobject, String path) {
 		try (FileWriter fileWriter = new FileWriter(path)) {
 			fileWriter.write(jsonobject.toJSONString());
@@ -52,21 +48,41 @@ public class Repository {
 	}
 
 	@SuppressWarnings("unchecked")
-	public boolean isWithdrawened(String userId, Long amount) {
-		JSONObject file=fileParser();
-		JSONObject account=(JSONObject)file.get(userId);
-		if((Double)account.get("Amount")<=500) {
-			return false;
-		}else {
-			account.put("Amount",(Long)account.get("Amount")-amount);
-			fileWriter(file,path);
-			return true;
-		}
-		
+	public void isDeposited(String userId, long amount) {
+		JSONObject file = fileParser();
+		JSONObject account = (JSONObject) file.get(userId);
+		account.put("Amount", (Double) account.get("Amount") + amount);
+		fileWriter(file, path);
 	}
 
-	public JSONObject BalanceEnquiry(String userId) {	
+	@SuppressWarnings("unchecked")
+	public boolean isWithdrawened(String userId, Long amount) {
+		JSONObject file = fileParser();
+		JSONObject account = (JSONObject) file.get(userId);
+		if ((Double) account.get("Amount") <= 500) {
+			return false;
+		} else {
+			account.put("Amount", (Long) account.get("Amount") - amount);
+			fileWriter(file, path);
+			return true;
+		}
+
+	}
+
+	public JSONObject BalanceEnquiry(String userId) {
 		return (JSONObject) fileParser().get(userId);
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	public boolean changePinNumber(CardDetails cardDetails, long newPinNumber) {
+		JSONObject file = fileParser();
+		JSONObject account = (JSONObject) file.get(cardDetails.getATMCardNumber());
+		if (account.get("BankAccountNumber").equals(cardDetails.getAccountNumber())) {
+			account.put("PinNumber", newPinNumber);
+			fileWriter(file, path);
+			return true;
+		}
+		return false;
+	}
+
 }
