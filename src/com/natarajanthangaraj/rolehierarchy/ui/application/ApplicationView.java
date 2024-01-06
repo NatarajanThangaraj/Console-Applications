@@ -14,7 +14,7 @@ public class ApplicationView {
 		showFeatures();
 	}
 
-	private void showFeatures() {
+	void showFeatures() {
 		int select;
 		while (true) {
 			operations();

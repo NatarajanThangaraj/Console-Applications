@@ -47,11 +47,12 @@ public class ApplicationViewModel {
 			addUser.addUser();
 		}case 7->{
 			displayUsersView.showUsers();
-		}case 8 ->{
-			System.out.print("Enter the starting User : ");
-			displayUsersView.showHierarchy(Utility.getStringInput());
+		}default->{
+			System.err.println("Invalid select !!! ");
+			applicationview.showFeatures();
+			}
 		}
-		}
+		
 
 	}
 
