@@ -39,6 +39,10 @@ public class ApplicationView {
 		System.out.println(" |  3. Display Role         |");
 		System.out.println(" |  4. Display Sub Role     |");
 		System.out.println(" |  5. Delete Role          |");
+		System.out.println(" |  6. Add User             |");
+		System.out.println(" |  7. Display User         |");
+		System.out.println(" |  8. Display SubUsers     |");
+		System.out.println(" |  9. Delete  User         |");
 		System.out.println(" |  0. Exit                 |");
 		System.out.println(" +--------------------------+");
 

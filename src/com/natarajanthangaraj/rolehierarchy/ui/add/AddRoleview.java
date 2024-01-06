@@ -1,4 +1,4 @@
-package com.natarajanthangaraj.rolehierarchy.ui.addrole;
+package com.natarajanthangaraj.rolehierarchy.ui.add;
 
 
 import com.natarajanthangaraj.rolehierarchy.Utility;
@@ -13,12 +13,7 @@ public class AddRoleview {
 		this.applicationviewmodel=applicationViewModel2;
 		this.addroleviewmodel = new AddRoleviewmodel(this);
 	}
-//	public void addRootRole(){
-//		Role role =new Role(); 
-//		role.setRole(getRootRole());
-	
-//		
-//	}
+
 	public void addRole(){
 		Role role =new Role(); 
 		// add condition if add root role
@@ -31,11 +26,6 @@ public class AddRoleview {
 		}
 	}
 
-//	 String getRootRole() {
-//		System.out.print(" Enter root role name : ");
-//		String rootRoleName = Utility.getStringInput();
-//		return rootRoleName.toUpperCase();
-//	}
 
 	 String getInputSubRole() {
 		System.out.print(" Enter  Role Name : ");
@@ -49,8 +39,6 @@ public class AddRoleview {
 		String reportingRoleName = Utility.getStringInput();
 		return reportingRoleName.toUpperCase();
 	}
-//	public void display() {
-//		applicationviewmodel.requestToShowHierarchy();
-//	}
+
 	
 }

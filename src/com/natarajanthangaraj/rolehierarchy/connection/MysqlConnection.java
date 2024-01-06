@@ -46,6 +46,7 @@ public class MysqlConnection {
 			preState.executeUpdate();
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 
@@ -77,27 +78,22 @@ public class MysqlConnection {
 		return map;
 	}
 
-	public boolean deleteAndUpadateQuery(String role) {
+	public void deleteAndUpadateQuery(String role,String deleteQuery,String getReportingRoleQuery) {
 		String reportingRole="";
-		String deleteQuery="delete from role where roleName= '"+role+"'";
-		String getReportingRoleQuery="select * from role where roleName='"+role+"'";
-		String updateQuery="update role set reportingName='"+reportingRole+"' where reportingName='"+role+"'";
+		String updateQuery;
 		try {
 			ResultSet result=getStatement().executeQuery(getReportingRoleQuery);
-			System.out.println(reportingRole);
 			if(result.next()) {
 				reportingRole=result.getString(3);
 			}
-			//executAddOrUpdateQuery(deleteQuery);
-			
+			updateQuery="update role set reportingName='"+reportingRole+"' where reportingName='"+role+"'";
+			executAddOrUpdateQuery(deleteQuery);
 			executAddOrUpdateQuery(updateQuery);
-			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
+			
 		}
-		//System.out.println(reportingRole);
+		
 	}
 
 }

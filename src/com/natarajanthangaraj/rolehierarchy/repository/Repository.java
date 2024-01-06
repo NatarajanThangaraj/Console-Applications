@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.natarajanthangaraj.rolehierarchy.connection.MysqlConnection;
 import com.natarajanthangaraj.rolehierarchy.dto.Role;
+import com.natarajanthangaraj.rolehierarchy.dto.User;
 
 public class Repository {
 	String query;
@@ -20,14 +21,20 @@ public class Repository {
 	}
 
 	public boolean insertRole(Role role) {
-		query = "insert into Role(roleID,roleName,reportingName)" + "values (" + (getMaxID() + 1) + ",'"
+		query = "insert into Role(roleID,roleName,reportingName)" + "values (" + (getMaxID("Role") + 1) + ",'"
 				+ role.getRole() + "','" + role.getReportingRole() + "')";
 		return MysqlConnection.getInstance().executAddOrUpdateQuery(query);
 
 	}
-
-	private int getMaxID() {
-		query = "select max(roleID) from Role";
+	public boolean insertUser(User user) {
+		query = "insert into Employee(roleID,empName,empRole)" + "values (" + (getMaxID("Employee") + 1) + ",'"
+				+ user.getUserName() + "','" + user.getUserRole() + "')";
+		return MysqlConnection.getInstance().executAddOrUpdateQuery(query);
+		
+	}
+	
+	private int getMaxID(String tableName) {
+		query = "select max(roleID) from "+tableName;
 		return MysqlConnection.getInstance().getMaxID(query);
 
 	}
@@ -36,8 +43,17 @@ public class Repository {
 		query = "select * from role";
 		return MysqlConnection.getInstance().getHierarchicalMap(query);
 	}
-
-	public boolean deleteRole(String deletingRole) {
-		return MysqlConnection.getInstance().deleteAndUpadateQuery(deletingRole);
+	public Map<String, String> getUserHierarchy() {
+		query = "select * from Employee";
+		return MysqlConnection.getInstance().getHierarchicalMap(query);
 	}
+
+	public void deleteRole(String deletingRole) {
+		String deleteQuery="delete from role where roleName= '"+deletingRole+"'";
+		String getReportingRoleQuery="select * from role where roleName='"+deletingRole+"'";
+		 MysqlConnection.getInstance().deleteAndUpadateQuery(deletingRole,deleteQuery,getReportingRoleQuery);
+	}
+
+
+	
 }
