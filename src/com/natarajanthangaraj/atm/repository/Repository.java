@@ -25,8 +25,8 @@ public class Repository {
 
 	public boolean validation(CardDetails carddetail) {
 		JSONObject object = (JSONObject) fileParser().get(carddetail.getATMCardNumber());
-		
-		return (long)object.get("PinNumber")==(carddetail.getPinNumber());
+
+		return (long) object.get("PinNumber") == (carddetail.getPinNumber());
 	}
 
 	JSONObject fileParser() {
@@ -83,6 +83,16 @@ public class Repository {
 			return true;
 		}
 		return false;
+	}
+
+	public CardDetails Statement(String userID) {
+		CardDetails card = new CardDetails();
+		JSONObject file = fileParser();
+		JSONObject account = (JSONObject) file.get(userID);
+		card.setAccountNumber((String) account.get("BankAccountNumber"));
+		card.setAmount((Double) account.get("Amount"));
+		return card;
+
 	}
 
 }

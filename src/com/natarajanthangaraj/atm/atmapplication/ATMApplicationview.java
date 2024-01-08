@@ -1,4 +1,8 @@
 package com.natarajanthangaraj.atm.atmapplication;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import com.natarajanthangaraj.atm.dto.CardDetails;
 import com.natarajanthangaraj.atm.validate.InputHandler;
 
@@ -43,6 +47,15 @@ public class ATMApplicationview {
 
 	public void errorMessage() {
 		System.err.println("\t\t Wrong PIN or CARD NUMBER \t\t  \n Last Transaction Cancelled...\n");
+	}
+	public void statement() {
+		LocalDate date=LocalDate.now();
+		LocalTime time=LocalTime.now();
+		System.out.println("\n*************************\n");
+		System.out.println("     CANARA BANK              ");
+		System.out.println(" Date : "+date);
+		System.out.println(" Time : "+time);
+		System.out.println("********************************* \n");
 	}
 
 }

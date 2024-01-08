@@ -4,6 +4,7 @@ public class CardDetails {
 	private String atmCardNumber;
 	private long pinNumber;
 	private String accountNumber;
+	private Double amount;
 
 	public String getATMCardNumber() {
 		return atmCardNumber;
@@ -27,5 +28,11 @@ public class CardDetails {
 
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+	public void setAmount(Double amount) {
+		this.amount=amount;
+	}
+	public Double getAmount() {
+		return amount;
 	}
 }
