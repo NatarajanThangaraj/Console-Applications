@@ -1,4 +1,4 @@
-package com.natarajanthangaraj.atm.atmapplication;
+package com.natarajanthangaraj.atm.statement;
 
 public class StatementViewModel {
  public Statement stmt;

@@ -1,7 +1,5 @@
 package com.natarajanthangaraj.airlinereservationsystem.managereservation;
 
-import com.natarajanthangaraj.airlinereservationsystem.repository.Repository;
-
 public class ManageBookingViewModel {
 	public ManageBookingView manageView;
 

@@ -32,4 +32,14 @@ public class InputHandler {
 			}
 		}
 	}
+	public static boolean statement() {
+		System.out.println("\n  Do You Want Statement ?  \n");
+		System.out.println( "  1.YES           0.NO        ");
+		int select=getChoice();
+		if(select==1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

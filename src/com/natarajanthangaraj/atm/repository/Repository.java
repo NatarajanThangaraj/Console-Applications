@@ -85,7 +85,7 @@ public class Repository {
 		return false;
 	}
 
-	public CardDetails Statement(String userID) {
+	public CardDetails getStatement(String userID) {
 		CardDetails card = new CardDetails();
 		JSONObject file = fileParser();
 		JSONObject account = (JSONObject) file.get(userID);
