@@ -1,5 +1,7 @@
 package com.natarajanthangaraj.airlinereservationsystem.managereservation;
 
+import com.natarajanthangaraj.airlinereservationsystem.repository.Repository;
+
 public class ManageBookingViewModel {
 	public ManageBookingView manageView;
 
@@ -8,8 +10,9 @@ public class ManageBookingViewModel {
 	}
 
 	public void manageTicketDetails(String ticketNumber, int selectedFeature) {
-		
-
+	  if( Repository.getInstance().cancelTicket(ticketNumber)) {
+		  manageView.successMessage();
+	  }
 	}
 
 }

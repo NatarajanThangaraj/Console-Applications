@@ -9,7 +9,7 @@ public class InputHandler {
 		while (true) {
 			try {
 				long n = scan.nextLong();
-					return n;
+				return n;
 			} catch (Exception e) {
 				System.out.print(" Enter Valid Input : ");
 				scan.nextLine();
@@ -32,13 +32,15 @@ public class InputHandler {
 			}
 		}
 	}
+
 	public static boolean statement() {
 		System.out.println("\n  Do You Want Statement ?  \n");
-		System.out.println( "  1.YES           0.NO        ");
-		int select=getChoice();
-		if(select==1) {
+		System.out.println("\n  1.YES           0.NO      \n");
+		System.out.print("Enter Choice : ");
+		int select = getChoice();
+		if (select == 1) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}

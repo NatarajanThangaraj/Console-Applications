@@ -140,6 +140,11 @@ package com.natarajanthangaraj.airlinereservationsystem.repository;
 			}
 		}
 
+		public boolean cancelTicket(String ticketNumber) {
+			
+			return false;
+		}
+
 	}
 
 

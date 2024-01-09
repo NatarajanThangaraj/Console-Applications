@@ -31,5 +31,8 @@ public class ManageBookingView {
 		String ticketNumber = scan.next();
 		return ticketNumber;
 	}
+	public void successMessage() {
+		System.out.println(" Ticket Cancelled !!! ");
+	}
 
 }

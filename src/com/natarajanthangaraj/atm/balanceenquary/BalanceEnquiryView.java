@@ -8,8 +8,8 @@ public BalanceEnquiryView(){
 public void getBalanceDetails(String userId) {
 	enquiryviewmodel.BalanceDetails(userId);
 }
-public void showDetails(Long accountNumber,Double balance) {
-	System.out.println("\n Account Number : "+accountNumber);
+public void showDetails(String string,Double balance) {
+	System.out.println("\n Account Number : "+string);
 	System.out.println("\n Balance :  Rs."+balance);
 }
 

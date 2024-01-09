@@ -4,7 +4,7 @@ import com.natarajanthangaraj.atm.repository.Repository;
 
 public class DepositViewModel {
 	DepositView depositview;
-
+	
 	public DepositViewModel(DepositView depositView2) {
 		this.depositview = depositView2;
 	}
@@ -13,9 +13,6 @@ public class DepositViewModel {
 		Repository.getInstance().isDeposited(userId,amount);
 		return true;
 	}
-
-	
-
 	
 
 }

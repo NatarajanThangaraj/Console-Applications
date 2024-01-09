@@ -8,6 +8,7 @@ public class Main {
 		ATMApplicationview atm=new ATMApplicationview();
 		atm.insertCard();
 		
+		
 	}
 
 }

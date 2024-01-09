@@ -10,11 +10,12 @@ import com.natarajanthangaraj.atm.dto.CardDetails;
 
 public class Repository {
 	private static Repository repo;
-	String path = "C:\\Users\\ELCOT\\eclipse-workspace\\Console_Applications\\src\\com\\natarajanthangaraj\\atm\\repository\\BankAccounts.json";
+	String path = "C:\\Users\\zoho\\eclipse-workspace\\Console-Applications\\src\\com\\natarajanthangaraj\\atm\\repository\\BankAccounts.json";
 
 	private Repository() {
 
 	}
+	
 
 	public static Repository getInstance() {
 		if (repo == null) {
@@ -24,16 +25,22 @@ public class Repository {
 	}
 
 	public boolean validation(CardDetails carddetail) {
+		try {
 		JSONObject object = (JSONObject) fileParser().get(carddetail.getATMCardNumber());
-
 		return (long) object.get("PinNumber") == (carddetail.getPinNumber());
+		}catch(Exception e) {
+			
+		}
+		return false;
 	}
 
 	JSONObject fileParser() {
 		JSONParser parser = new JSONParser();
 		JSONObject object = null;
 		try {
+			
 			object = (JSONObject) parser.parse(new FileReader(path));
+			
 		} catch (Exception e) {
 			System.out.println("Problem on DataBase");
 		}
