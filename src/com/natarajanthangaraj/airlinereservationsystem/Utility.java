@@ -1,11 +1,14 @@
 package com.natarajanthangaraj.airlinereservationsystem;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Utility {
 	static Scanner scan=new Scanner(System.in);
-	static LocalDateTime obj=LocalDateTime.now();
+	static LocalDateTime dateandtime=LocalDateTime.now();
+	static DateTimeFormatter dateformat= DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	static DateTimeFormatter timeformat= DateTimeFormatter.ofPattern("HH:mm");
 	public static String getPassengerType(int select) {
 		if(select==1) {
 			return "Adult";
@@ -26,11 +29,19 @@ public class Utility {
 			return null;
 		}
 		}
+	public static  String getTicketNumber() {
+		System.out.print(" Enter the Ticket Number : ");
+		String ticketNumber = scan.next();
+		return ticketNumber;
+	}
 		
 	public static String currentDate() {
-		
-		return obj.toString();
+		return dateandtime.format(dateformat);
 	}
+	public static String currentTime() {
+		return dateandtime.format(timeformat);
+	}
+	
 	public static int getInteger() {
 		while(true) {
 			try {

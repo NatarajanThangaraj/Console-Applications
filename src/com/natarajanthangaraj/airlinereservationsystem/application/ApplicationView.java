@@ -33,7 +33,6 @@ public class ApplicationView {
 		System.out.println("  |  1. Search Flights                   |");
 		System.out.println("  |  2. Manage Booking                   |");
 		System.out.println("  |  3. View Ticket                      |");
-		System.out.println("  |  4. Flight Status                    |");
 		System.out.println("  |  0. Exit                             |");
 		System.out.println("  +======================================+");
 		System.out.println();

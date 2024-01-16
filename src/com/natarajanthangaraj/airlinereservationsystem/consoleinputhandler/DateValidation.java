@@ -21,10 +21,11 @@ public class DateValidation {
 		while(true) {
 			userInput=getDate();
 			 LocalDate userDate = LocalDate.parse(userInput, format);
-			 if( userDate.isAfter(currentDate)) {
+			 if( userDate.isEqual(currentDate)||userDate.isAfter(currentDate)) {
 			 return userInput;
 			 }else {
-				 System.err.println("        The date is Expired    ");
+				 System.err.println(".....The date is Expired......");
+				 System.out.print(" Enter correct Date : ");
 			 }
 		}
 		

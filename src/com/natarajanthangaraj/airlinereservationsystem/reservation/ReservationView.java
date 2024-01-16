@@ -91,25 +91,8 @@ public class ReservationView {
 		return ticketDetails;
 	}
 
-//	public void showTicket(Map amp) {
-//		System.out.println("+-------------------------------------------+");
-//		System.out.println("|  Ticket Number :   |" + ticket.getTicketNumber()+"|");
-//	    System.out.println("| From               |"+ticket.getFrom());
-//		System.out.println("Depart Date : " + ticket.getDate());
-//		System.out.println("Passenger Name : " + ticket.getFirstName() + " " + ticket.getLastName());
-//		System.out.println("Passenger Details : "+ ticket.getPassenger_Type()+"\n");
-//		System.out.println("Number of Passengers : "+ticket.getPassenger_Count());
-//	System.out.println(" On-Boarding : ");
-//		System.out.println();
-//	}
-
 	public void successMessage() {
 		System.out.println(" Ticket booked successfully....");	
-	}
-
-	public void manageBooking() {
-		
-		
 	}
 
 }

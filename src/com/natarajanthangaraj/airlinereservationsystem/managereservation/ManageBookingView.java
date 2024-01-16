@@ -2,6 +2,8 @@ package com.natarajanthangaraj.airlinereservationsystem.managereservation;
 
 import java.util.Scanner;
 
+import com.natarajanthangaraj.airlinereservationsystem.Utility;
+
 public class ManageBookingView {
 	Scanner scan = new Scanner(System.in);
 	private ManageBookingViewModel managebookingviewmodel;
@@ -11,7 +13,7 @@ public class ManageBookingView {
 	}
 
 	public void manageBooking() {
-		String TicketNumber = getTicketNumber();
+		String TicketNumber =Utility. getTicketNumber();
 		int selectedFeature = manageFeatures();
 		managebookingviewmodel.manageTicketDetails(TicketNumber, selectedFeature);
 	}
@@ -26,13 +28,14 @@ public class ManageBookingView {
 		return selectedFeature;
 	}
 
-	private String getTicketNumber() {
-		System.out.print(" Enter the Ticket Number ");
-		String ticketNumber = scan.next();
-		return ticketNumber;
-	}
+	
 	public void successMessage() {
 		System.out.println(" Ticket Cancelled !!! ");
+	}
+
+	public void failureMessage() {
+		System.out.println(" Operation failed !!! ....");
+		
 	}
 
 }

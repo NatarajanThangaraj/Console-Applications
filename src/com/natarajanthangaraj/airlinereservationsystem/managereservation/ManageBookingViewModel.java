@@ -10,9 +10,11 @@ public class ManageBookingViewModel {
 	}
 
 	public void manageTicketDetails(String ticketNumber, int selectedFeature) {
-	  if( Repository.getInstance().cancelTicket(ticketNumber)) {
-		  manageView.successMessage();
-	  }
+		if (Repository.getInstance().cancelTicket(ticketNumber)) {
+			manageView.successMessage();
+		} else {
+			manageView.failureMessage();
+		}
 	}
 
 }
