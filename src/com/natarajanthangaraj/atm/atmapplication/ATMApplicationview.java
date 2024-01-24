@@ -11,7 +11,7 @@ public class ATMApplicationview {
 	}
 
 	public void insertCard() {
-		
+		System.out.println("  ~*~ Insert the ATM CARD ~*~");
 		System.out.print(" Enter 16 - digit card Number : ");
 		carddetail.setATMCardNumber(InputHandler.getStringValue());
 		System.out.print(" Enter Pin Number : ");

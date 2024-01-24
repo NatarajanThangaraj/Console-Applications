@@ -19,7 +19,7 @@ public class Client1 {
 			try {
 				amountOfTry++;
 				socket = new Socket("localhost", 8080);
-				socket.isConnected();
+				//socket.isConnected();
 			} catch (Exception e) {
 				System.out.println("Trying again in few seconds");
 				try {
@@ -35,6 +35,7 @@ public class Client1 {
 			streamWriter = new OutputStreamWriter(socket.getOutputStream());
 			writer = new BufferedWriter(streamWriter);
 			System.out.println(" connected successfully  ");
+			userName=getName();
 		} catch (Exception e) {
 		}
 	}
@@ -42,11 +43,11 @@ public class Client1 {
 	void startChat() {
 		String message;
 		try {
-			while (socket.isConnected()) {
+			while (!socket.isClosed()) {
 				message = scan.nextLine();
 				if (message.equalsIgnoreCase("exit")) {
 					closeReaderAndWrite(socket, writer, streamWriter);
-					socket.isClosed();
+					break;
 				} else {
 					writer.write(userName + " : " + message);
 					writer.flush();
@@ -75,8 +76,13 @@ public class Client1 {
 
 	String getName() {
 		System.out.print(" Enter your Name : ");
-		String name = scan.next();
-		return name;
+		return  scan.next();
+	}
+	public static void main(String[] args) {
+		Client1 client =new Client1();
+		client.getConnection();
+		Thread chatThread = new Thread(client::startChat);
+        chatThread.start();
 	}
 
 }
