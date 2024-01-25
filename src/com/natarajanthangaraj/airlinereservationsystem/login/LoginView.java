@@ -9,15 +9,15 @@ public class LoginView{
 	Scanner scan = new Scanner(System.in);
 
 	public LoginView() {
-		//this.logviewmodel = new LoginViewModel(this);
+		this.logviewmodel = new LoginViewModel(this);
 	}
-  void start() {
-	    System.out.print("+-----------+");
-		System.out.print("|  1.Admin  |");
-		System.out.print("  --------- |");
-		System.out.print("|  2.User   |");
-		System.out.print("+-----------+\n");
+  public void start() {
+	    System.out.println("+-----------+");
+		System.out.println("| 1.Admin   |");
+		System.out.println("| --------- |");
+		System.out.println("| 2.User    |");
+		System.out.println("+-----------+\n");
 		System.out.print("Enter Correct Choice : ");
-		//logviewmodel.selectAdminOrUser(Utility.getInteger());
+		logviewmodel.selectAdminOrUser(scan.nextInt());
 	}
 }

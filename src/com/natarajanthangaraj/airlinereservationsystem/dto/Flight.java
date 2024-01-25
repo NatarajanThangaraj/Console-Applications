@@ -6,10 +6,14 @@ public class Flight {
 	private String to;
 	private String departTime;
 	private String landingTime;
+	private String departDate;
 	private String economyPrice;
 	private String businessPrice;
 	private Long economySeats;
 	private int businessSeats;
+	private String passengerType;
+	private int passengerCount;
+	private String category;
 
 	public String getFlightNumber() {
 		return flightNumber;
@@ -82,5 +86,39 @@ public class Flight {
 	public void setLandingTime(String landingTime) {
 		this.landingTime = landingTime;
 	}
+
+	public String getDepartDate() {
+		return departDate;
+	}
+
+	public void setDepartDate(String departDate) {
+		this.departDate = departDate;
+	}
+
+	public String getPassengerType() {
+		return passengerType;
+	}
+
+	public void setPassengerType(String passengerType) {
+		this.passengerType = passengerType;
+	}
+
+	public int getPassengerCount() {
+		return passengerCount;
+	}
+
+	public void setPassengerCount(int passengerCount) {
+		this.passengerCount = passengerCount;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
 
 }

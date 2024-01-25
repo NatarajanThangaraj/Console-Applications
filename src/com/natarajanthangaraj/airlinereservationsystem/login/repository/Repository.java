@@ -4,24 +4,24 @@ public class Repository {
 	private static Repository repo;
 	private static JDBCConnection jdbcconnect;
 
-	public Repository getInstance() {
+	public static  Repository getInstance() {
 		if (repo == null) {
-			this.repo = new Repository();
-			this.jdbcconnect = new JDBCConnection();
+			repo = new Repository();
+			jdbcconnect = new JDBCConnection();
 		}
 		return repo;
 
 	}
 
 	// checks occurence in table
-	boolean checkDetails(String name, String password, String tableName) {
+	public boolean checkDetails(String name, String password, String tableName) {
 		boolean flag = true;
 		if (tableName.equalsIgnoreCase("user")) {
 			flag = false;
 		}
 		return jdbcconnect.checkDetails(name, password, flag);
 	}
-	boolean newEntry(String name,String password,String tableName) {
+	public boolean newEntry(String name,String password,String tableName) {
 		boolean flag=true;
 		if(tableName.equalsIgnoreCase("user")) {
 			flag=false;

@@ -42,16 +42,16 @@ public class Utility {
 		return dateandtime.format(timeformat);
 	}
 	
-	public static int getInteger() {
-		while(true) {
-			try {
-				int n=scan.nextInt();
-				return n;
-			}catch(Exception e) {
-				System.err.println("Invalid Input !!! ");
-				System.out.print("Enter the Valid Input : ");
-				scan.nextLine();
-			}
-		}
-	}
+//	public static int getInteger() {
+//		while(true) {
+//			try {
+//				int n=scan.nextInt();
+//				return n;
+//			}catch(Exception e) {
+//				System.err.println("Invalid Input !!! ");
+//				System.out.print("Enter the Valid Input : ");
+//				scan.nextLine();
+//			}
+//		}
+	
 }

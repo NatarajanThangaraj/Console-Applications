@@ -1,16 +1,12 @@
 package com.natarajanthangaraj.airlinereservationsystem.application;
 
-import java.util.Scanner;
+import com.natarajanthangaraj.airlinereservationsystem.BaseView;
 
-import com.natarajanthangaraj.airlinereservationsystem.Utility;
-import com.natarajanthangaraj.airlinereservationsystem.reservation.ReservationView;
-
-public class ApplicationView {
-	private ApplicationViewModel appviewmodel;
-	Scanner scan = new Scanner(System.in);
+public class ApplicationView extends BaseView{
+	private ApplicationViewModel appViewModel;
 
 	public ApplicationView() {
-		this.appviewmodel = new ApplicationViewModel(this);
+		this.appViewModel = new ApplicationViewModel();
 	}
 
 	public void start() {
@@ -18,9 +14,9 @@ public class ApplicationView {
 		do {
 			showFeatures();
 			System.out.print("Enter your choice: ");
-			select = Utility.getInteger();
+			select = getInt();
 			if(select!=0)
-			appviewmodel.selectedFeature(select);
+			appViewModel.selectedFeature(select);
 		}while(select!=0);
 			
 		

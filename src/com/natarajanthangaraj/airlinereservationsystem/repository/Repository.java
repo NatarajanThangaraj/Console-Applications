@@ -50,11 +50,10 @@ public class Repository {
 	}
 
 	// check each flight's criteria matching to user search
-	public List<Flight> availableFlights(TicketDetails userSearch) {
+	public List<Flight> availableFlights(Flight userSearch) {
 		getFlightDetails();
 		List<Flight> availableFlights = new ArrayList<>();
 		for (Flight flight : allFlights) {
-			// aiport check
 			if (userSearch.getFrom().equalsIgnoreCase(flight.getFrom())
 					&& userSearch.getTo().equalsIgnoreCase(flight.getTo())) {
 				availableFlights.add(flight);
@@ -96,12 +95,12 @@ public class Repository {
 
 		ticketDetails.put("Landing Time", flightDetails.get("LandingTime"));
 		ticketDetails.put("Total Amount",
-				(passengerDetails.getPassenger_Count() * Integer.parseInt((String) flightDetails.get("EconomyPrice"))));
+				(passengerDetails.getPassengerCount() * Integer.parseInt((String) flightDetails.get("EconomyPrice"))));
 		ticketDetails.put("First Name", passengerDetails.getFirst_Name());
 
 		ticketDetails.put("Last Name", passengerDetails.getLast_Name());
 
-		ticketDetails.put("Type", passengerDetails.getPassenger_Type());
+		ticketDetails.put("Type", passengerDetails.getPassengerType());
 
 		ticketDetails.put("Count", passengerDetails.getPassenger_Count());
 		ticketDetails.put("class", passengerDetails.getCategory());

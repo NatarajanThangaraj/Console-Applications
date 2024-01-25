@@ -3,10 +3,10 @@ package com.natarajanthangaraj.airlinereservationsystem.DisplayTicket;
 import org.json.simple.JSONObject;
 
 public class DisplayTicketView {
-	public DisplayTicketViewModel displayticketviewmodel;
+	public DisplayTicketViewModel displayTicketViewModel;
 
 	public void showTicket(String ticketNumber) {
-		JSONObject ticket=displayticketviewmodel.getTicket(ticketNumber);
+		JSONObject ticket=displayTicketViewModel.getTicket(ticketNumber);
 		System.out.println("+----------------------------------+");
 		System.out.println("|  Ticket Number :   |  " + ticket.get("TicketNumber") + "  |");
 		System.out.println("|  From               |" + ticket.get("From") + "  |");
