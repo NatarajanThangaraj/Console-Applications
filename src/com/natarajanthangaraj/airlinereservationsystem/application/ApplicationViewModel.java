@@ -1,5 +1,4 @@
 package com.natarajanthangaraj.airlinereservationsystem.application;
-import com.natarajanthangaraj.airlinereservationsystem.Utility;
 import com.natarajanthangaraj.airlinereservationsystem.DisplayTicket.DisplayTicketView;
 import com.natarajanthangaraj.airlinereservationsystem.managereservation.ManageBookingView;
 import com.natarajanthangaraj.airlinereservationsystem.reservation.ReservationView;
@@ -24,13 +23,13 @@ public class ApplicationViewModel {
 			manageView.manageBooking();
 		}
 		case 3 -> {
-			ticketView.showTicket(Utility.getTicketNumber());
+			ticketView.showTicket(ticketView.getTicketNumber());
 		}
 		case 0 -> {
 			break;
 		}
 		default -> {
-			System.out.println("Invalid selecton");
+			System.out.println("Invalid Choosen");
 		}
 		}
 

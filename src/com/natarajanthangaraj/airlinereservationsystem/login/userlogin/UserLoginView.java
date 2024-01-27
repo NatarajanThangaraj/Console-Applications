@@ -2,8 +2,11 @@ package com.natarajanthangaraj.airlinereservationsystem.login.userlogin;
 
 import java.util.Scanner;
 
-public class UserLoginView {
-	private UserLoginViewModel userLoginViewModel;
+import com.natarajanthangaraj.airlinereservationsystem.dto.User;
+import com.natarajanthangaraj.airlinereservationsystem.login.LoginView;
+
+public class UserLoginView extends LoginView{
+	 UserLoginViewModel userLoginViewModel;
 	Scanner scan=new Scanner(System.in);
 	public UserLoginView() {
 		this.userLoginViewModel = new UserLoginViewModel(this);
@@ -19,24 +22,10 @@ public class UserLoginView {
 		userLoginViewModel.selectedOperation(getSelection());
 		
 	}
-	 void getNewUserDetails() {
-		String name;
-		String password;
-		String gMail;
-		String mobileNumber;
-		System.out.println();
-		System.out.print(" Enter Your Name : "); //yet to validate
-		name=scan.next();
-		System.out.print(" Enter PassWord : ");
-		password=scan.next();
-		System.out.print(" Enter Gmail Address : ");
-		password=scan.next();
-		System.out.print(" Enter  Mobile Number : ");
-		password=scan.next();
+	
+	 
+	public void wrongUserNamePasswordMessage() {
+		System.err.println(" Wrong UserName or PassWord ");
 		
-	}
-	int getSelection() {
-		System.out.println(" Enter your Selection : ");
-		return scan.nextInt();
 	}
 }

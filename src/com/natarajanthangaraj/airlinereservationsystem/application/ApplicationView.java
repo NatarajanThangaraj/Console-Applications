@@ -33,4 +33,5 @@ public class ApplicationView extends BaseView{
 		System.out.println("  +======================================+");
 		System.out.println();
 	}
+	
 }

@@ -2,7 +2,9 @@ package com.natarajanthangaraj.airlinereservationsystem.DisplayTicket;
 
 import org.json.simple.JSONObject;
 
-public class DisplayTicketView {
+import com.natarajanthangaraj.airlinereservationsystem.BaseView;
+
+public class DisplayTicketView extends BaseView{
 	public DisplayTicketViewModel displayTicketViewModel;
 
 	public void showTicket(String ticketNumber) {

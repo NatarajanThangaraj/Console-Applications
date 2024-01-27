@@ -2,18 +2,21 @@ package com.natarajanthangaraj.airlinereservationsystem;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
+import java.util.Random;
 
 public class Utility {
-	static Scanner scan=new Scanner(System.in);
 	static LocalDateTime dateandtime=LocalDateTime.now();
 	static DateTimeFormatter dateformat= DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	static DateTimeFormatter timeformat= DateTimeFormatter.ofPattern("HH:mm");
+
 	public static String getPassengerType(int select) {
 		if(select==1) {
 			return "Adult";
 		}else if (select==2) {
 			return "Children";
+		}
+		else if (select==3) {
+			return "Infants";
 		}else {
 			return null;
 		}
@@ -29,11 +32,6 @@ public class Utility {
 			return null;
 		}
 		}
-	public static  String getTicketNumber() {
-		System.out.print(" Enter the Ticket Number : ");
-		String ticketNumber = scan.next();
-		return ticketNumber;
-	}
 		
 	public static String currentDate() {
 		return dateandtime.format(dateformat);
@@ -42,16 +40,10 @@ public class Utility {
 		return dateandtime.format(timeformat);
 	}
 	
-//	public static int getInteger() {
-//		while(true) {
-//			try {
-//				int n=scan.nextInt();
-//				return n;
-//			}catch(Exception e) {
-//				System.err.println("Invalid Input !!! ");
-//				System.out.print("Enter the Valid Input : ");
-//				scan.nextLine();
-//			}
-//		}
+    public static String flightNumberGenerator() {
+    	Random ran=new Random();
+    	int randomNumber=ran.nextInt(900)+100;
+    	return "AI-"+randomNumber;
+    }
 	
 }

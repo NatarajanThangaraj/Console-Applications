@@ -1,15 +1,18 @@
 package com.natarajanthangaraj.airlinereservationsystem.dto;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Flight {
 	private String flightNumber;
 	private String from;
 	private String to;
-	private String departTime;
-	private String landingTime;
-	private String departDate;
-	private String economyPrice;
-	private String businessPrice;
-	private Long economySeats;
+	private LocalTime departTime;
+	private LocalTime landingTime;
+	private LocalDate departDate;
+	private Double economyPrice;
+	private Double businessPrice;
+	private int economySeats;
 	private int businessSeats;
 	private String passengerType;
 	private int passengerCount;
@@ -39,11 +42,11 @@ public class Flight {
 		this.to = to;
 	}
 
-	public Long getEconomySeats() {
+	public int getEconomySeats() {
 		return economySeats;
 	}
 
-	public void setEconomySeats(Long long1) {
+	public void setEconomySeats(int long1) {
 		this.economySeats = long1;
 	}
 
@@ -55,43 +58,43 @@ public class Flight {
 		this.businessSeats = businessSeats;
 	}
 
-	public String getEconomyPrice() {
+	public Double getEconomyPrice() {
 		return economyPrice;
 	}
 
-	public void setEconomyPrice(String economyPrice) {
+	public void setEconomyPrice(Double economyPrice) {
 		this.economyPrice = economyPrice;
 	}
 
-	public String getBusinessPrice() {
+	public Double getBusinessPrice() {
 		return businessPrice;
 	}
 
-	public void setBusinessPrice(String businessPrice) {
+	public void setBusinessPrice(Double businessPrice) {
 		this.businessPrice = businessPrice;
 	}
 
-	public String getDepartTime() {
+	public LocalTime getDepartTime() {
 		return departTime;
 	}
 
-	public void setDepartTime(String departTime) {
+	public void setDepartTime(LocalTime departTime) {
 		this.departTime = departTime;
 	}
 
-	public String getLandingTime() {
+	public LocalTime getLandingTime() {
 		return landingTime;
 	}
 
-	public void setLandingTime(String landingTime) {
+	public void setLandingTime(LocalTime landingTime) {
 		this.landingTime = landingTime;
 	}
 
-	public String getDepartDate() {
+	public LocalDate getDepartDate() {
 		return departDate;
 	}
 
-	public void setDepartDate(String departDate) {
+	public void setDepartDate(LocalDate departDate) {
 		this.departDate = departDate;
 	}
 

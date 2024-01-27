@@ -2,9 +2,9 @@ package com.natarajanthangaraj.airlinereservationsystem.managereservation;
 
 import java.util.Scanner;
 
-import com.natarajanthangaraj.airlinereservationsystem.Utility;
+import com.natarajanthangaraj.airlinereservationsystem.BaseView;
 
-public class ManageBookingView {
+public class ManageBookingView extends BaseView{
 	Scanner scan = new Scanner(System.in);
 	private ManageBookingViewModel managebookingviewmodel;
 
@@ -13,7 +13,7 @@ public class ManageBookingView {
 	}
 
 	public void manageBooking() {
-		String TicketNumber =Utility. getTicketNumber();
+		String TicketNumber = getTicketNumber();
 		int selectedFeature = manageFeatures();
 		managebookingviewmodel.manageTicketDetails(TicketNumber, selectedFeature);
 	}

@@ -3,22 +3,25 @@ package com.natarajanthangaraj.airlinereservationsystem.consoleinputhandler;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.Scanner;
 
 public class DateValidation {
 	LocalDateTime date;
-
+	static Scanner scan=new Scanner(System.in);
 	static LocalDateTime currentDate() {
 		return LocalDateTime.now();
 	}
 
-	public  String isValidDateTime(String date) {
+	public static LocalDate isValidDateTime() {
+		
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate currentDate = LocalDate.now();
 		while (true) {
+			String date=scan.next();
 			LocalDate userDate = LocalDate.parse(date, format);
 			if (userDate.isEqual(currentDate) || userDate.isAfter(currentDate)) {
-				return date;
+				
+				return userDate;
 			} else {
 				System.err.println(".....The date is Expired......");
 				System.out.print(" Enter correct Date : ");
@@ -34,13 +37,14 @@ public class DateValidation {
 	}
 
 
-		public  String getDateOfBirth(String date) {
+		public static  LocalDate getDateOfBirth() {
 			DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			LocalDate currentDate = LocalDate.now();
 			while (true) {
+				String date=scan.next();
 				LocalDate userDate = LocalDate.parse(date, format);
 				if (userDate.isBefore(currentDate)) {
-					return date;
+					return userDate;
 				} else {
 					System.err.println(".....The date is Expired......");
 					System.out.print(" Enter correct Date : ");

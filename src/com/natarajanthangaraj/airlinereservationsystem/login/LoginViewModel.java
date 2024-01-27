@@ -4,29 +4,29 @@ import com.natarajanthangaraj.airlinereservationsystem.login.adminlogin.AdminLog
 import com.natarajanthangaraj.airlinereservationsystem.login.userlogin.UserLoginView;
 
 public class LoginViewModel {
-	private LoginView loginView;
-	private AdminLoginView adminLogin;
-	private UserLoginView userLogin;
-	
+	 LoginView loginView;
+	 AdminLoginView adminLogin;
+	 UserLoginView userLogin;
+
 	public LoginViewModel(LoginView loginView) {
-		this.loginView=loginView;
-		this.adminLogin=new AdminLoginView();
-		this.userLogin=new UserLoginView();
+		this.loginView = loginView;
+		this.adminLogin = new AdminLoginView();
+		this.userLogin = new UserLoginView();
 	}
 
 	public void selectAdminOrUser(int choice) {
-		switch(choice) {
-		case 1->{
+		switch (choice) {
+		case 1 -> {
 			adminLogin.getAdminDetails();
 		}
-		case 2->{
+		case 2 -> {
 			userLogin.showLoginDetails();
 		}
-		default->{
+		default -> {
 			loginView.start();
 		}
 		}
-		
+
 	}
-	
+
 }
