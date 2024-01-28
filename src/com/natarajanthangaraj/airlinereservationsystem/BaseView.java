@@ -18,10 +18,20 @@ public class BaseView {
 			}
 		}
 	}
-	public  String getTicketNumber() {
+	public  int getTicketNumber() {
 		System.out.print(" Enter the Ticket Number : ");
-		String ticketNumber = scan.next();
-		return ticketNumber;
+		int ticketNumber ;
+		while (true) {
+			try {
+				ticketNumber = scan.nextInt();
+				return ticketNumber;
+			} catch (Exception e) {
+				System.err.println("Invalid Input !!! ");
+				System.out.print("Enter the Valid Input : ");
+				scan.nextLine();
+			}
+		}
+		
 	}
 	public String getFlightNumber() {
 		System.out.print(" Enter Flight Number : ");

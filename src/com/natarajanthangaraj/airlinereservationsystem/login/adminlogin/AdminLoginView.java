@@ -48,9 +48,19 @@ public class AdminLoginView extends LoginView{
 		System.out.print(" Enter  land/departing Airport : ");
 		newFlight.setTo(scan.next());
 		System.out.print(" Enter departTime [ HH:mm ] : ");
-		newFlight.setDepartTime(TimeValidation.timeValidation());
+		String time = scan.next();
+		while (!TimeValidation.timeValidation(time)) {
+			System.out.print(" Enter valid Time : ");
+			time = scan.next();
+		}
+		newFlight.setDepartTime(TimeValidation.timeFormat(time));
 		System.out.print(" Enter landingTime [ HH:mm ] : ");
-		newFlight.setLandingTime(TimeValidation.timeValidation());
+		 time = scan.next();
+		while (!TimeValidation.timeValidation(time)) {
+			System.out.print(" Enter valid Time : ");
+			time = scan.next();
+		}
+		newFlight.setLandingTime(TimeValidation.timeFormat(time));
 		System.out.print(" Enter Economy Class Price ( in Ruppes ): ");
 		newFlight.setEconomyPrice(scan.nextDouble());
 		System.out.print(" Enter Business Class Price ( in Ruppes ): ");

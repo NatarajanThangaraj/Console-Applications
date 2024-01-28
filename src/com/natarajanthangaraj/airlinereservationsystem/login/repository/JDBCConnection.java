@@ -13,22 +13,25 @@ import java.util.List;
 
 import com.natarajanthangaraj.airlinereservationsystem.dto.Flight;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Passenger;
+import com.natarajanthangaraj.airlinereservationsystem.dto.TicketDetails;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Trip;
 
 public class JDBCConnection {
-	Connection con;
-	String url = "jdbc:mysql://localhost:3306/AirlineReservation";
-	String userName = "root";
-	String password = "Nattu@27";
+	private static JDBCConnection jdbcConnect; 
+    private static Connection con;
 	int affectedRows = 0;
 
-	public JDBCConnection() {
-		try {
-			con = DriverManager.getConnection(url, userName, password);
-		} catch (SQLException e) {
-
-			e.printStackTrace();
+	
+	public static JDBCConnection getInstance() {
+		if(jdbcConnect==null) {
+			jdbcConnect=new JDBCConnection();
+			try {
+				con=DriverManager.getConnection("jdbc:mysql://localhost:3306/AirlineReservation", "root", "Nattu@27");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}		
 		}
+		return jdbcConnect;
 	}
 
 	boolean insertData(String name, String password, String gMailAddress, String mobileNumber, boolean flag) {
@@ -133,8 +136,8 @@ public class JDBCConnection {
 	public String getAirportCodeByName(String airportName) {
 		String airportCode = null;
 		try {
-			String query = "SELECT * FROM airport WHERE airportName = ?";
-			PreparedStatement innerPrepstmt = con.prepareStatement(query);
+			
+			PreparedStatement innerPrepstmt = con.prepareStatement(Query.getAirportCodeByName);
 			innerPrepstmt.setString(1, airportName);
 			ResultSet resultSet = innerPrepstmt.executeQuery();
 
@@ -245,33 +248,63 @@ public class JDBCConnection {
 		return 0;
 	}
 
-//	public List<Integer> generateTicket(String flightNumber, List<Integer> passengerIDList) {
-//		List<Integer> generatedPassIDs = new ArrayList<>();
-//        try {
-//             PreparedStatement preparedStatement = con.prepareStatement(Query.insertPassenger, Statement.RETURN_GENERATED_KEYS); 
-//            for (Passenger passenger : passengerIDList) {
-//                preparedStatement.setString(1, passenger.getFirstName());
-//                preparedStatement.setString(2, passenger.getLastName());
-//                preparedStatement.setDate(3, Date.valueOf(passenger.getDateOfBirth()));
-//                preparedStatement.setString(4, passenger.getgMailAddress());
-//                preparedStatement.setString(5, passenger.getMobileNumber());
-//                preparedStatement.setString(6, flightNumber);
-//                preparedStatement.addBatch();
-//                preparedStatement.executeBatch();
-//
-//            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-//                while (generatedKeys.next()) {
-//                    generatedPassIDs.add(generatedKeys.getInt(1));
-//                }
-//            }
-//        
-//        }catch(Exception e) {
-//        	System.out.println(" Mission failed");
-//        }
-//        
-//        return generatedPassIDs;
+	public TicketDetails getTicket(int ticketNumber) {
+		TicketDetails ticket=new TicketDetails();
+		try {
+			PreparedStatement prep=con.prepareStatement(Query.getTicket);
+			prep.setInt(1, ticketNumber);
+		    ResultSet resultSet=prep.executeQuery();
+		    if (resultSet.next()) {
+		    ticket.setFlight(getFlightByNumber(resultSet.getString("flightNumber")));
+		    ticket.setPassenger(getPassengerByID(resultSet.getInt("passID")));
+		    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ticket;
+	}
 
+	private Flight getFlightByNumber(String flightNumber) {
+		Flight flight=new Flight();
+		try {
+			PreparedStatement stmt=con.prepareStatement(Query.getFlightByNumber);
+			stmt.setString(1, flightNumber);
+			ResultSet resultSet=stmt.executeQuery();
+			 if (resultSet.next()) {
+			flight.setFlightNumber(resultSet.getString("flightNumber"));
+			flight.setFrom(resultSet.getString("fromAirportCode"));
+			flight.setTo(resultSet.getString("toAirportCode"));
+			flight.setDepartTime(resultSet.getTime("departTime").toLocalTime());
+			flight.setLandingTime(resultSet.getTime("landingTime").toLocalTime());
+			flight.setEconomyPrice(resultSet.getDouble("economyPrice"));
+			 }
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 		
-	//}
+		return flight;
+	}
+
+	private Passenger getPassengerByID(int ID) {
+		Passenger passenger=new Passenger();
+		try {
+			PreparedStatement stmt=con.prepareStatement(Query.getPassengerByID);
+			stmt.setInt(1, ID);
+			ResultSet resultSet=stmt.executeQuery();
+			 if (resultSet.next()) {
+			passenger.setFirstName(resultSet.getString("firstName"));
+			passenger.setLastName(resultSet.getString("lastName"));
+			passenger.setDateOfBirth(resultSet.getDate("dateOfBirth").toLocalDate());
+			passenger.setgMailAddress(resultSet.getString("gMail"));
+			passenger.setMobileNumber(resultSet.getString("mobileNumber"));
+			 }
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return passenger;
+	}
 
 }

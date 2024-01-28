@@ -9,6 +9,7 @@ import com.natarajanthangaraj.airlinereservationsystem.BaseView;
 import com.natarajanthangaraj.airlinereservationsystem.Utility;
 import com.natarajanthangaraj.airlinereservationsystem.consoleinputhandler.DateValidation;
 import com.natarajanthangaraj.airlinereservationsystem.consoleinputhandler.TimeValidation;
+import com.natarajanthangaraj.airlinereservationsystem.consoleinputhandler.Validation;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Flight;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Passenger;
 import com.natarajanthangaraj.airlinereservationsystem.dto.Trip;
@@ -17,28 +18,36 @@ public class ReservationView extends BaseView {
 
 	private ReservationViewModel reserveViewModel;
 	Scanner scan = new Scanner(System.in);
-	// Flight flightDetails = new Flight();
-
 	public ReservationView() {
 		this.reserveViewModel = new ReservationViewModel(this);
 	}
 
 	public void userSearch() {
 		reserveViewModel.makeTrip();
-		// reserveViewModel.ticketAllocation(userSelectedFlight());
 	}
 
 	public Trip flightDetails() {
+		String date, time;
 		Trip trip = new Trip();
-		System.out.println("~*~*~   Enter your Trip Details   ~*~*~");
+		System.out.println("\n~*~*~   Enter your Trip Details   ~*~*~\n");
 		System.out.print(" From : ");
 		trip.setFrom(scan.next());
 		System.out.print(" To : ");
 		trip.setTo(scan.next());
 		System.out.print(" Depart Date [dd/mm/yyyy] :");
-		trip.setDate(DateValidation.isValidDateTime());
+		date = scan.next();
+		while (!DateValidation.isValidDate(date)) {
+			System.out.print(" Enter valid Date : ");
+			date = scan.next();
+		}
+		trip.setDate(DateValidation.dateFormat(date));
 		System.out.print(" Depart Time [HH:mm] :");
-		trip.setTime(TimeValidation.timeValidation());
+		time = scan.next();
+		while (!TimeValidation.timeValidation(time)) {
+			System.out.print(" Enter valid Time : ");
+			time = scan.next();
+		}
+		trip.setTime(TimeValidation.timeFormat(time));
 		System.out.print(" Number of Passenger :");
 		trip.setNumberOfPassenger(getInt());
 		System.out.println("     +===================+");
@@ -75,7 +84,7 @@ public class ReservationView extends BaseView {
 		}
 	}
 
-	public void userSelectionAction() {//make default
+	public void userSelectionAction() {// make default
 		System.out.println(" --------------------");
 		System.out.println(" 1. Reserve a Ticket ");
 		System.out.println(" 9. Go Back          ");
@@ -86,6 +95,7 @@ public class ReservationView extends BaseView {
 	}
 
 	Passenger passengerDetails() {
+		String gMail, mobileNumber;
 		Passenger passenger = new Passenger();
 		System.out.print(" FirstName : ");
 		passenger.setFirstName(scan.next());
@@ -99,22 +109,39 @@ public class ReservationView extends BaseView {
 		System.out.print("Passenger :");
 		passenger.setPassengerType(Utility.getPassengerType(scan.nextInt()));
 		System.out.print(" Date of Birth [ dd/mm/yyyy ] : ");
-		passenger.setDateOfBirth(DateValidation.getDateOfBirth());
+		String date = scan.next();
+		while (!DateValidation.getDateOfBirth(date)) {
+			System.out.print(" Enter valid Date of Birth : ");
+			date = scan.next();
+		}
+		scan.nextLine();
 		System.out.print(" Email (Optional, press Enter to skip): ");
-	    String gMail = scan.next().trim();
-	    passenger.setgMailAddress(gMail.isEmpty() ? null : gMail);
-	    System.out.print(" Mobile Number (Optional, press Enter to skip): ");
-	    String mobileNumber = scan.next().trim();
-	    passenger.setMobileNumber(mobileNumber.isEmpty() ? null : mobileNumber);
+		gMail = scan.nextLine().trim();
+		while (!gMail.isEmpty() && !Validation.isValidGmailAddress(gMail)) {
+			System.out.println(" Enter valid gMail : ");
+			gMail = scan.nextLine().trim();
+		}
+		scan.next();
+		passenger.setgMailAddress(gMail.isEmpty() ? null : gMail);
+		System.out.print(" Mobile Number (Optional, press Enter to skip): ");
+		mobileNumber = scan.nextLine().trim();
+
+		while (!mobileNumber.isEmpty() && !Validation.isValidMobileNumber(mobileNumber)) {
+			System.out.println(" Enter valid Mobile Number : ");
+			mobileNumber = scan.nextLine().trim();
+		}
+		passenger.setMobileNumber(mobileNumber.isEmpty() ? null : mobileNumber);
 		return passenger;
 	}
 
 	public void successMessage() {
 		System.out.println(" Ticket booked successfully....");
 	}
+
 	public void endMessage() {
 		System.out.println(" Thank you Have a Good Day....");
 	}
+
 	public void wrongSelectionAlert() {
 		System.err.println(" Wrong Selection");
 	}
@@ -135,7 +162,7 @@ public class ReservationView extends BaseView {
 	public List<Passenger> getPassengerList(int numberOfPassenger) {
 		List<Passenger> passengerList = new ArrayList<>();
 		for (int i = 0; i < numberOfPassenger; i++) {
-			System.out.println("\t\t PASSENGER "+(i+1)+"DETAILS : \t\t");
+			System.out.println("\t\t PASSENGER " + (i + 1) + " DETAILS : \t\t");
 			passengerList.add(passengerDetails());
 		}
 		return passengerList;
@@ -143,12 +170,18 @@ public class ReservationView extends BaseView {
 
 	public void showTicketNumbers(List<Integer> ticketNumberList) {
 		System.out.println(" Booking Successfully");
-		for(int i=0;i<ticketNumberList.size();i++) {
-			System.out.println((i+1)+" . "+ticketNumberList.get(i));
+		System.out.println("--------------------------------");
+		System.out.println(" Serial Number\t|\tTicket Number");
+		System.out.println("--------------------------------");
+
+		for (int i = 0; i < ticketNumberList.size(); i++) {
+			System.out.printf(" %d\t|\t%s\n", i + 1, ticketNumberList.get(i));
 		}
-		System.out.println(" These are Your Tickets ... Kindly check your Ticket Details \n");
+
+		System.out.println("--------------------------------");
+		System.out.println(" These are Your Tickets... Kindly check your Ticket Details\n");
 		System.out.println(" Have a Good Journey!!!");
-		
+
 	}
 
 }

@@ -10,6 +10,7 @@ public class Utility {
 	static DateTimeFormatter timeformat= DateTimeFormatter.ofPattern("HH:mm");
 
 	public static String getPassengerType(int select) {
+		
 		if(select==1) {
 			return "Adult";
 		}else if (select==2) {

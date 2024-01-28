@@ -10,29 +10,14 @@ import com.natarajanthangaraj.airlinereservationsystem.repository.Repository;
 
 public class ReservationViewModel {
 	private ReservationView reserveView;
-	//TicketDetails ticketDetails;
 	Flight flight;
 	Trip trip;
 
 	public ReservationViewModel(ReservationView reservationView) {
 		this.reserveView = reservationView;
 		this.flight = new Flight();
-		// flightDetails=new TicketDetails();
+		
 	}
-
-	/*public void getAllFlights() {
-		flight = reserveView.flightDetails();
-		reserveView.showavailableFlights(Repository.getInstance().availableFlights(ticketDetails));
-
-	}*/
-
-	/*public void ticketAllocation(String userSelectedFlight) {
-		//Repository.getInstance().allotSeat(userSelectedFlight, reserveView.passengerDetails());
-		if (Repository.getInstance().createTicket(userSelectedFlight, ticketDetails)) {
-			reserveView.successMessage();
-		}
-	}*/
-
 	public void goForward(int select)  {
 		String flightNumber = null;
 		List<Passenger>pList;

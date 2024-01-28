@@ -1,27 +1,26 @@
 package com.natarajanthangaraj.airlinereservationsystem.consoleinputhandler;
 
 import java.time.LocalTime;
+
 import java.time.format.DateTimeFormatter;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TimeValidation {
-static Scanner scan=new Scanner(System.in);
-	public static LocalTime timeValidation() {
-		while(true) {
-			String time=scan.next();
+
+	public static boolean timeValidation(String time) {
+
 		String timeRegex = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
 		Pattern pattern = Pattern.compile(timeRegex);
-		Matcher matcher = pattern.matcher(time);
+		Matcher matcher = pattern.matcher(time);	
+			return matcher.matches();
 		
-		if(matcher.matches()) {
-			DateTimeFormatter format=DateTimeFormatter.ofPattern("HH:mm");
-			LocalTime localTime = LocalTime.parse(time,format);
+		
+	}
+
+	public static LocalTime timeFormat(String time) {
+		DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm");
+		LocalTime localTime = LocalTime.parse(time, format);
 		return localTime;
-		}else {
-			System.out.print(" Enter valid Time : ");
-		}
-		}
 	}
 }

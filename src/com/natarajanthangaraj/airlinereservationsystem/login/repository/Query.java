@@ -12,5 +12,9 @@ final static String updateFlightSeats="UPDATE flight SET economySeats = economyS
 final static String getFlight="SELECT * FROM flight where fromAirportCode=? AND toAirportCode=? AND departTime=?";final
 static String insertPassenger="INSERT INTO passenger (firstName, lastName, dateOfBirth, gMail, mobileNumber, flightNumber) " +
         "VALUES (?,?,?,?,?,?)";
+final static  String getTicket="SELECT * FROM ticket WHERE ticketNumber=?";
+final static String getAirportCodeByName = "SELECT * FROM airport WHERE airportName = ?";
+final static String getFlightByNumber="SELECT * FROM flight WHERE flightNumber=?";
+final static String getPassengerByID="SELECT * FROM passenger WHERE passID=?";
 }
 
