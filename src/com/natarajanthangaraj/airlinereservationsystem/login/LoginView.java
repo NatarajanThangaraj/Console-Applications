@@ -3,7 +3,6 @@ package com.natarajanthangaraj.airlinereservationsystem.login;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import com.natarajanthangaraj.airlinereservationsystem.Utility;
 import com.natarajanthangaraj.airlinereservationsystem.dto.User;
 
 public class LoginView{
