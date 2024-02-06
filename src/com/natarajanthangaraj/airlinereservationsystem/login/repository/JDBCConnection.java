@@ -307,4 +307,19 @@ public class JDBCConnection {
 		return passenger;
 	}
 
+	public boolean cancelTicket(int ticketNumber) {
+		try {
+		PreparedStatement preparedStatement = con.prepareStatement(Query.deleteTicket);
+			preparedStatement.setInt(1, ticketNumber);
+			affectedRows=preparedStatement.executeUpdate();
+			if(affectedRows>0) {
+				return true;
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

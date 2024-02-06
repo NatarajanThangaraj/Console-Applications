@@ -42,4 +42,8 @@ public class Repository {
 		return JDBCConnection.getInstance().getTicket(ticketNumber);
 	}
 
+	public boolean cancelTicket(int ticketNumber) {
+		return JDBCConnection.getInstance().cancelTicket(ticketNumber);
+	}
+
 }

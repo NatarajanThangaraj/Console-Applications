@@ -13,7 +13,7 @@ public class ManageBookingView extends BaseView{
 	}
 
 	public void manageBooking() {
-		String TicketNumber = getTicketNumber();
+		int TicketNumber = getTicketNumber();
 		int selectedFeature = manageFeatures();
 		managebookingviewmodel.manageTicketDetails(TicketNumber, selectedFeature);
 	}
@@ -34,7 +34,7 @@ public class ManageBookingView extends BaseView{
 	}
 
 	public void failureMessage() {
-		System.out.println(" Operation failed !!! ....");
+		System.out.println(" Please Enter Correct Ticket Number  !!! ....");
 		
 	}
 

@@ -9,7 +9,7 @@ public class ManageBookingViewModel {
 		manageView = manageBookingView;
 	}
 
-	public void manageTicketDetails(String ticketNumber, int selectedFeature) {
+	public void manageTicketDetails(int ticketNumber, int selectedFeature) {
 		if (Repository.getInstance().cancelTicket(ticketNumber)) {
 			manageView.successMessage();
 		} else {
