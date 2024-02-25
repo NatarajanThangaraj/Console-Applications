@@ -212,25 +212,7 @@ public class JDBCConnection {
 	        
 	        return ticketNumbers;
 	 }
-//	private void closeResultSet(ResultSet resultSet) {
-//		try {
-//			if (resultSet != null) {
-//				resultSet.close();
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	private void closeResources() {
-//		try {
-//			if (prepstmt != null) {
-//				prepstmt.close();
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
+
 
 	private int insertTicket(String flightNumber, int passID) {
 		try {

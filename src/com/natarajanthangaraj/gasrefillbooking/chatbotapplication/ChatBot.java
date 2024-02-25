@@ -14,11 +14,7 @@ public class ChatBot {
 		this.chatbotviewModel = new ChatBotViewModel(this);
 		chatbotviewModel.start();
 	}
-
-	public static void main(String[] args) {
-		ChatBot chatbot = new ChatBot();
-	}
-
+	
 	public void getUserChoice() {
 		choice.setChoice(userinput.getUserInput());
 	}
