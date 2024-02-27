@@ -19,7 +19,7 @@ import com.natarajanthangaraj.airlinereservationsystem.dto.Trip;
 public class JDBCConnection {
 	private static JDBCConnection jdbcConnect; 
     private static Connection con;
-	int affectedRows = 0;
+	int affectedRows ;
 
 	
 	public static JDBCConnection getInstance() {
