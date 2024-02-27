@@ -9,7 +9,7 @@ public class Batter {
 	private String outType;
 
 	public Batter(String playerName) {
-		this.batsmanName=playerName;
+		this.batsmanName = playerName;
 	}
 
 	public String getBatsmanName() {
@@ -25,7 +25,7 @@ public class Batter {
 	}
 
 	public void setRuns(int runs) {
-		this.runs+=runs;
+		this.runs += runs;
 	}
 
 	public int getBalls() {
@@ -42,6 +42,7 @@ public class Batter {
 
 	public void setFours() {
 		this.fours++;
+		this.runs += 4;
 	}
 
 	public int getSixes() {
@@ -50,13 +51,14 @@ public class Batter {
 
 	public void setSixes() {
 		this.sixes++;
+		this.runs += 6;
 	}
 
 	public String getOutType() {
 		return outType;
 	}
 
-	public void setOutType(String outType, String bowler, String fielder) {
+	public void setOutType(String outType, String bowler) {
 		switch (outType) {
 		case "bowled" -> {
 			this.outType = " b " + bowler;
@@ -64,19 +66,26 @@ public class Batter {
 		case "lbw" -> {
 			this.outType = " [ LBW ] " + bowler;
 		}
+		default -> {
+			this.outType = "*";
+		}
+		}
+
+	}
+
+	public void setOutType(String outType, String bowler, String fielder) {
+		switch (outType) {
 		case "caught out" -> {
 			this.outType = " c " + fielder + "  " + " b " + bowler;
 		}
 		case "run out" -> {
 			this.outType = " [ Run Out ]" + fielder;
 		}
-		case "stumbed" -> {
+		case "stumped" -> {
 			this.outType = " St " + fielder + " b " + bowler;
-		}
-		default -> {
-			this.outType = "***";
 		}
 		}
 
 	}
+
 }

@@ -15,8 +15,8 @@ public class ApplicationView extends BaseView {
 	}
 
 	public void start() {
-		ScoreBoard scoreCard = getMatchInfo();
-		applicationViewModel.startScoring(scoreCard);
+		//ScoreBoard scoreCard = ;
+		applicationViewModel.startScoring(getMatchInfo());
 
 	}
 
@@ -29,9 +29,9 @@ public class ApplicationView extends BaseView {
 
 	private Team[] getTeamsInfo() {
 		Team[] teams = new Team[2];
-		System.out.println("/t TEAM 1 DETAILS /t");
+		System.out.println("\t TEAM 1 DETAILS \t");
 		teams[0] = getTeam();
-		System.out.println("/t TEAM 1 DETAILS /t");
+		System.out.println("\t TEAM 2 DETAILS /\t");
 		teams[1] = getTeam();
 		return teams;
 	}
@@ -40,7 +40,7 @@ public class ApplicationView extends BaseView {
 		Team team = new Team();
 		team.setName(getString(" TEAM NAME "));
 		ArrayList<Player> players = new ArrayList<>();
-		System.out.println("/n   GIVE PLAYING 11'S   /n");
+		System.out.println("\n   GIVE PLAYING 11'S   \n");
 		for (int i = 1; i < 12; i++) {
 			Player player = new Player();
 			player.setPlayerName(getString(" player " + i + " Name"));

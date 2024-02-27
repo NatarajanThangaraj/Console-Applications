@@ -35,16 +35,16 @@ public class Innings {
 		return inningsBat;
 	}
 
-	public void setInningsBat(ArrayList<Batter> inningsBat) {
-		this.inningsBat = inningsBat;
+	public void setInningsBat(Batter inningsBat) {
+		this.inningsBat.add(inningsBat);
 	}
 
 	public ArrayList<Bowler> getInningsBowl() {
 		return inningsBowl;
 	}
 
-	public void setInningsBowl(ArrayList<Bowler> inningsBowl) {
-		this.inningsBowl = inningsBowl;
+	public void setInningsBowl(Bowler inningsBowl) {
+		this.inningsBowl.add(inningsBowl);
 	}
 
 
