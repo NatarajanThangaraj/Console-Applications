@@ -3,6 +3,7 @@ package com.natarajanthangaraj.cricketscoreboard.DTO;
 import java.util.ArrayList;
 
 public class Innings {
+	private Team[] team=new Team[2];
 	private Batter striker;
 	private Batter nonStriker;
 	private Bowler bowler;
@@ -45,6 +46,15 @@ public class Innings {
 
 	public void setInningsBowl(Bowler inningsBowl) {
 		this.inningsBowl.add(inningsBowl);
+		
+	}
+
+	public Team[] getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team[] team) {
+		this.team = team;
 	}
 
 

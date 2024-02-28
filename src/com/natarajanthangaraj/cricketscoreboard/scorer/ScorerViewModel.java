@@ -89,11 +89,11 @@ public class ScorerViewModel {
 		}
 		case 10 -> {// Caught-Out
 			wicketListener(innings, score);
-			scoreView.changeBatsman(innings, score,"caught out", scoreView.selectFielder(score));
+			scoreView.changeBatsman(innings,"caught out", scoreView.selectFielder());
 		}
 		case 11 -> {// Run-out
 			wicketListener(innings, score);
-			scoreView.changeBatsman(innings, score,"run out", scoreView.selectFielder(score));
+			scoreView.changeBatsman(innings,"run out", scoreView.selectFielder());
 		}
 		case 12 -> {// lbw
 			wicketListener(innings, score);

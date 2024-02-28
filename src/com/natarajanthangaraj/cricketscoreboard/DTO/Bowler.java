@@ -1,20 +1,17 @@
 package com.natarajanthangaraj.cricketscoreboard.DTO;
 
 public class Bowler {
+	private Player player;
 	private String bowlerName;
-	private String oversBowled;
 	private int balls;
 	private int givenRuns;
 	private int wickets;
 	// private double economy
 	public String getBowlerName() {
-		return bowlerName;
+		return this.player.getPlayerName();
 	}
-	public Bowler(String playerName) {
-		this.bowlerName=playerName;
-	}
-	public void setBowlerName(String bowlerName) {
-		this.bowlerName = bowlerName;
+	public Bowler(Player player) {
+		this.player=player;
 	}
 	public int getGivenRuns() {
 		return givenRuns;
@@ -49,8 +46,12 @@ public class Bowler {
 		default -> over + "." + ball;
 	};
 	}
-	public void increaseBalls(String oversBowled) {
-		this.oversBowled = oversBowled;
+	
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 	
 }

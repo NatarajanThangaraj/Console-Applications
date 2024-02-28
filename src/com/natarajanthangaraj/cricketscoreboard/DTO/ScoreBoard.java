@@ -10,8 +10,8 @@ public class ScoreBoard {
 	private int totalBalls;
 	private int extras;
 	private Team[] teams = new Team[2];
-	private Innings Innings1 ;
-	private Innings Innings2;
+	private Innings innings1 ;
+	private Innings innings2;
 
 	public String getBattingTeam() {
 		return battingTeam;
@@ -41,8 +41,11 @@ public class ScoreBoard {
 		return target;
 	}
 
-	public void setTarget(int target) {
-		this.target = target;
+	public void setTarget() {
+		this.target =this.totalRuns+1;
+		this.totalRuns=0;
+		this.wickets=0;
+		this.totalBalls=0;
 	}
 
 	public int getTotalOvers() {
@@ -61,20 +64,24 @@ public class ScoreBoard {
 	}
 
 	public Innings getInnings1() {
-		return Innings1;
+		return innings1;
 	}
 
-	public void setInnings1(Innings innings1) {
-		Innings1 = innings1;
+	public void setInnings(Innings innings) {
+		if(this.innings1==null)
+		innings1 = innings;
+		else {
+			innings2=innings;
+		}
 	}
 
 	public Innings getInnings2() {
-		return Innings2;
+		return innings2;
 	}
 
-	public void setInnings2(Innings innings2) {
-		Innings2 = innings2;
-	}
+//	public void setInnings2(Innings innings2) {
+//		Innings2 = innings2;
+//	}
 
 	public int getExtras() {
 		return extras;
@@ -83,8 +90,8 @@ public class ScoreBoard {
 	public void setExtras(int extras) {
 		this.extras += extras;
 	}
-
-	
+	public void clearExtras() {
+		this.extras=0;}
 
 	
 

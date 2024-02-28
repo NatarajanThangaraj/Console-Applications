@@ -6,7 +6,7 @@ public class Batter {
 	private int balls;
 	private int fours;
 	private int sixes;
-	private String outType;
+	private String outType="not out";
 
 	public Batter(String playerName) {
 		this.batsmanName = playerName;
@@ -41,7 +41,7 @@ public class Batter {
 	}
 
 	public void setFours() {
-		this.fours++;
+		this.fours+=1;
 		this.runs += 4;
 	}
 
@@ -50,7 +50,7 @@ public class Batter {
 	}
 
 	public void setSixes() {
-		this.sixes++;
+		this.sixes+=1;
 		this.runs += 6;
 	}
 
@@ -64,10 +64,10 @@ public class Batter {
 			this.outType = " b " + bowler;
 		}
 		case "lbw" -> {
-			this.outType = " [ LBW ] " + bowler;
+			this.outType = " (LBW) " + bowler;
 		}
 		default -> {
-			this.outType = "*";
+			this.outType = "not out";
 		}
 		}
 
@@ -79,7 +79,7 @@ public class Batter {
 			this.outType = " c " + fielder + "  " + " b " + bowler;
 		}
 		case "run out" -> {
-			this.outType = " [ Run Out ]" + fielder;
+			this.outType = "  (Run Out)" + fielder;
 		}
 		case "stumped" -> {
 			this.outType = " St " + fielder + " b " + bowler;

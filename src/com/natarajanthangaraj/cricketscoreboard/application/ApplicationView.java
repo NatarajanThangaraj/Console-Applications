@@ -15,7 +15,6 @@ public class ApplicationView extends BaseView {
 	}
 
 	public void start() {
-		//ScoreBoard scoreCard = ;
 		applicationViewModel.startScoring(getMatchInfo());
 
 	}
