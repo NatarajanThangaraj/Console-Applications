@@ -44,14 +44,16 @@ This repository is a collection of five console applications, each tailored to a
 
 **How to Use:** Refer to the README for detailed instructions.
 
-### 5. Mingle - The Chat App
+### 5. SCORIFY - THE CRICKET SCORING APP
 
-**Description:** A chat application facilitating communication between two users using Socket programming.
+**Description:** Scorify is a cricket scoring application that offers an engaging experience, featuring team and player selection, shot selection, and more.
 
 **Features:**
-- Multithreaded application architecture for efficient message handling.
+- Create teams.
+- Start scoring with a guided interface.
+- Winner revealed at the end.
 
-**How to Use:** Check the README within the application directory.
+**How to Use:** Please refer to the README file within the application directory for instructions.
 
 
 
