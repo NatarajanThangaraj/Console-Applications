@@ -8,7 +8,6 @@ import java.sql.Statement;
 public class MySQLConnection {
 	private static MySQLConnection mysqlconnect;
 	private static Connection con;
-	private static Statement statement;
 	private final static String url="jdbc:mysql://localhost:3306/airlinereservation";
 	private final static String userName="root";
 	private final static String password="Nattu@27";
@@ -18,7 +17,7 @@ public class MySQLConnection {
 			mysqlconnect = new MySQLConnection();
 			try {
 				con= DriverManager.getConnection(url, userName, password);
-				statement=con.createStatement();
+				con.createStatement();
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
