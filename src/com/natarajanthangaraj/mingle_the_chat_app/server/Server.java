@@ -34,10 +34,10 @@ public class Server {
 			clients.put(clientName,handler);
 			// start the handler thread 
 			handler.start();
-			ss.close();
+			
 			}
 		} catch (IOException e) {
-		   System.out.println(" Server ERROR !");
+		   System.out.println(" Server ERROR !"+e);
 		}
 		
 		
